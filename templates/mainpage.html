@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="author" content="BBakco" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+
+    <!-- 이 아래 태그 추가함(정현). 화면 렌더링할 때 최신의 인터넷 엔진을 쓰라는 뜻의 ?-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- http://ogp.me/ -->
+    <meta property="og:type" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
+    <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
+    <meta property="twitter:card" content="">
+    <meta property="twitter:site" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
+    <meta property="twitter:url" content="">
+
+    <title>BBakco</title>
+
+    <!-- CSS reset, CSS style, Jquery import -->
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <!-- 일반적인 fabicon 설정 (정현) -->
+    <link rel="icon" href="../static/image/fabicon.ico">
+    <!-- 아이폰용 fabicon 설정 (정현) -->
+    <link rel="apple-touch-icon" href="../static/image/fabicon.ico">
+    <!-- 인터넷 익스플로러용 fabicon 설정 -->
+    <link rel="short icon" type="image/x-icon" href="../static/image/fabicon.ico">
+
+    <!-- https://fontawesome.com/start -->
+    <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+
+    <!-- <script src="js/main.js"></script> -->
+    <script defer src="/static/js/slide.js"></script>
+    <script defer src="/static/js/backtotop.js"></script>
+    <script defer src="/static/js/display.js"></script>
+    <script defer src="/static/js/popup.js"></script>
+    <script defer src="/static/js/footericon.js"></script>
+
+
+
+</head>
+
+<body>
+    <header id="header">
+        <div class="header">
+            <div class="row">
+                <div class="header_menu">
+                    <a href="#pop1" class="loginBtn">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="section_01">
+        <div class="section_01">
+            <div class="Q_wrapper">
+                <div class="Q_text">QUES</div>
+                <div class="Q_image">
+                    <div class="Q_image">
+                        <img class="logo" src="../static/image/q-logo-black.png"
+                            onmouseover="this.src='../static/image/q-logo-white.png'"
+                            onmouseout="this.src='../static/image/q-logo-black.png'">
+                    </div>
+                </div>
+                <div class="Q_text">TION</div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="inner">
+        <section class="section section--second">
+
+            <div class="qna-container">
+                <div class="qna-title-container">
+                    <div class="qna-title">Q & A</div>
+                    <div class="arrow-container">
+                        <!-- <div class="slide-prev"><img src="../image/left.png" width="35px" height="35px" onmouseover="this.src='/image/left-dark.png'" onmouseout="this.src='/image/left.png'"></div>
+                        <div class="slide-next"><img src="../image/right.png" width="35px" height="35px" onmouseover="this.src='/image/right-dark.png'" onmouseout="this.src='/image/right.png'"></div> -->
+                        <img class="slide-prev" src="../static/image/left.png" width="35px" height="35px"
+                            onmouseover="this.src='/static/image/left-dark.png'"
+                            onmouseout="this.src='/static/image/left.png'">
+                        <img class="slide-next" src="../static/image/right.png" width="35px" height="35px"
+                            onmouseover="this.src='/static/image/right-dark.png'"
+                            onmouseout="this.src='/static/image/right.png'">
+                    </div>
+                </div>
+                <div class="qna-desc">
+                    다른 사람들은 지금 어떤 생각을 하고 있을까요?
+                </div>
+                <ul class="qna-showlist" data-position="0">
+                    <li class="qna-showcard qna-showcard-1">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q1<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-2">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q2<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-3">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q3<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-4">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q4<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-5">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q5<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-6">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q6<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-7">
+                        <div class="show-question-container">
+                            <div class="show-question-text">Q7<br>질문입니다.</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
+                                하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
+                                200 공백제외 145)
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+
+        </section>
+    </div>
+
+    <a id="backtotop" href="#"></a>
+
+    <section id="section_03">
+        <div class="section_03">
+            <p class="member_title">Our Team Members</p>
+            <div class="member">
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+            </div>
+            <p class="member_title">Special Thanks To</p>
+            <div class="member">
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+                <div class="member_card">
+                    <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                        class="member_img">
+                    <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
+                    <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="footer_icon">
+            <ul>
+                <li>
+                    <a href='#' class="kakaotalk">
+                        <img src="/static/image/kakaotalk.svg">
+                        <span>KakaoTalk</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="facebook">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                        <span>Facebook</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i>
+                        <span>twitter</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="footer">
+            <p> "?"(QUESTION) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코 </p>
+            <p> copyrightⓒ2021 빡코 All rights reserved </p>
+        </div>
+    </footer>
+
+    <!-- login popup창 만들기 -->
+    <div class="login-popup" id="pop1">
+        <div class="login-title">LOGIN</div>
+        <hr id="hr1">
+        <div class="login-container id-container">
+            <img src="../static/image/id.png">
+            <div class="outBox id-outbox">
+                <div class="inputBox id-inputbox">
+                    <input type="text" id="id" name="">
+                    <label for="id">ID</label>
+                </div>
+            </div>
+        </div>
+        <div class="login-container pw-container">
+            <img src="../static/image/pw.png">
+            <div class="outBox pw-outbox">
+                <div class="inputBox pw-inputbox">
+                    <input type="text" id="pw" name="">
+                    <label for="pw">PASSWORD</label>
+                </div>
+            </div>
+        </div>
+        <a href="#" id="exit-loginbox">X</a>
+
+    </div>
+    <div class="dim">
+    </div>
+
+
+</body>
+
+</html>
