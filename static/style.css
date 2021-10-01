@@ -794,16 +794,26 @@ margin: 0 10px;
 @media (max-width: 1024px) {
 
 .login-popup {
-    width: 50%;
-    height: 40%;
-    left: 25%;
-    top: 30%;
+    width: 30%;
+    height: 70%;
+    left: 35%;
+    top: 15%;
     padding-top: 10px;
    
 }
 
+.login-btn {
+    margin-left: 8px;
+    width: 127px;
+    margin-top: 220px;
+}
+
+.other-option {
+    transform: translate(0, 0px);
+}
+
 .login-title {
-    margin-top: 10px;
+    margin-top: 70px;
     margin-bottom: 10px;
     font-size: 25px;
 }
@@ -813,6 +823,9 @@ margin: 0 10px;
 }
 
 
+.other-option div {
+    transform: translate(0, 40px);
+}
 
 }
 
@@ -856,43 +869,7 @@ margin: 0 10px;
 
 }
 
-@media (max-width: 1000px) and (orientation: landscape) {
-    .login-popup {
-        height: 60%;
-        top: 20%;
-    }
 
-    .login-container_input {
-        transform: translateX(-80px);
-    }
-
-    .outBox .inputBox input[type="text"]:focus + label,
-.outBox.existence .inputBox label {
-    color:#ff3300; 
-    transform:scale(.85) translate(35px, -48px);}
-
-.outBox .inputBox input[type="password"]:focus,
-.outBox.existence .inputBox input[type="password"] {
-    border:2px solid #ff3300;
-}
-
-.outBox .inputBox input[type="password"]:focus + label,
-.outBox.existence .inputBox label {
-    color:#ff3300;
-     transform:scale(.85) translate(20px, -48px);
-    }
-
-
-.login-btn {
-    transform: translate(80px, -95px);
-    height: 140px;
-}
-
-.other-option div {
-    transform: translate(0, -80px);
-}
-
-}
 
 
 /* 화면 너비 0 ~ 768px */
@@ -924,9 +901,9 @@ margin: 0 10px;
         padding-left: 60px;
     }
     .login-popup {
-        width: 60%;
+        width: 80%;
         height: 56%;
-        left: 20%;
+        left: 10%;
         top: 22%;
        
     }
@@ -943,24 +920,8 @@ margin: 0 10px;
 
     .login-btn {
         margin-top: 250px;
+        transform: translateX(13px);
     }
-
-    .outBox .inputBox input[type="text"]:focus + label,
-    .outBox.existence .inputBox label {
-        color:#ff3300; 
-        transform:scale(.85) translate(35px, -48px);}
-    
-    .outBox .inputBox input[type="password"]:focus,
-    .outBox.existence .inputBox input[type="password"] {
-        border:2px solid #ff3300;
-    }
-    
-    .outBox .inputBox input[type="password"]:focus + label,
-    .outBox.existence .inputBox label {
-        color:#ff3300;
-         transform:scale(.85) translate(20px, -48px);
-        }
-
 
 }
 @media (max-width: 480px) {
@@ -982,9 +943,7 @@ margin: 0 10px;
         margin-bottom: 20px;
     }
 
-    .login-btn {
-        margin-top: 250px;
-    }
+
 }
 
 .outBox .inputBox input[type="text"]:focus + label,
