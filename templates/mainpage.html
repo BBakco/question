@@ -34,6 +34,10 @@
     <link rel="stylesheet" href="/static/style.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+
+
+
+
     <!-- 일반적인 fabicon 설정 (정현) -->
     <link rel="icon" href="../static/image/fabicon.ico">
     <!-- 아이폰용 fabicon 설정 (정현) -->
@@ -65,8 +69,7 @@
     <script defer src="/static/js/display.js"></script>
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
-
-
+    <script defer src="/static/js/slide2.js"></script>
 
 </head>
 
@@ -84,13 +87,13 @@
         <div class="section_01">
             <div class="Q_wrapper">
                 <div class="Q_text">QUES</div>
+
                 <div class="Q_image">
-                    <div class="Q_image">
-                        <img class="logo" src="../static/image/q-logo-black.png"
-                            onmouseover="this.src='../static/image/q-logo-white.png'"
-                            onmouseout="this.src='../static/image/q-logo-black.png'">
-                    </div>
+                    <img class="logo" src="../static/image/q-logo-black.png"
+                        onmouseover="this.src='../static/image/q-logo-white.png'"
+                        onmouseout="this.src='../static/image/q-logo-black.png'">
                 </div>
+
                 <div class="Q_text">TION</div>
             </div>
         </div>
@@ -294,36 +297,59 @@
                     </a>
                 </li>
             </ul>
+            <div class="footer-icon_title">SHARE US</div>
         </div>
         <div class="footer">
             <p> "?"(QUESTION) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코 </p>
             <p> copyrightⓒ2021 빡코 All rights reserved </p>
+            <img class=collaboration src="/static/image/collaboration.png">
         </div>
     </footer>
 
     <!-- login popup창 만들기 -->
     <div class="login-popup" id="pop1">
-        <div class="login-title">LOGIN</div>
-        <hr id="hr1">
-        <div class="login-container id-container">
-            <img src="../static/image/id.png">
-            <div class="outBox id-outbox">
-                <div class="inputBox id-inputbox">
-                    <input type="text" id="id" name="">
-                    <label for="id">ID</label>
+        <div class="login-wrap">
+            <div class="login-title">QUES<span>?</span>TION</div>
+            <!-- <div class="login-wrap2"> -->
+            <div class="login-container_input">
+                <div class="login-container_input_id">
+                    <img src="../static/image/id.png">
+                    <div class="outBox id-outbox">
+                        <div class="inputBox id-inputbox">
+                            <input type="text" id="id" name="">
+                            <label for="id">ID</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-container_input_pw">
+                    <img src="../static/image/pw.png">
+                    <div class="outBox pw-outbox">
+                        <div class="inputBox pw-inputbox">
+                            <input type="password" id="pw" name="">
+                            <label for="pw">PASSWORD</label>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="login-container pw-container">
-            <img src="../static/image/pw.png">
-            <div class="outBox pw-outbox">
-                <div class="inputBox pw-inputbox">
-                    <input type="text" id="pw" name="">
-                    <label for="pw">PASSWORD</label>
+            <div class="login-btn">Login</div>
+            <div class="other-option">
+                <div>
+                    <a href="#" class="other-option_signin">Join us!</a>
+                </div>
+                <div>
+                    <a href="#" class="other-option_forgot">Forgot ID/pw?</a>
                 </div>
             </div>
+
+            <!-- </div> -->
         </div>
-        <a href="#" id="exit-loginbox">X</a>
+
+
+
+        <a href="#" id="exit-loginbox">x</a>
+
+    </div>
+
 
     </div>
     <div class="dim">
