@@ -308,6 +308,7 @@
 
     <!-- login popup창 만들기 -->
     <div class="login-popup" id="pop1">
+        <center>
         <div class="login-wrap">
             <div class="login-title">QUES<span>?</span>TION</div>
             <!-- <div class="login-wrap2"> -->
@@ -315,23 +316,23 @@
                 <div class="login-container_input_id">
                     <img src="../static/image/id.png">
                     <div class="outBox id-outbox">
-                        <div class="inputBox id-inputbox">
-                            <input type="text" id="id" name="">
+                        <form method="" action="" class="inputBox id-inputbox">
+                            <input type="text" id="id" name="id" />
                             <label for="id">ID</label>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="login-container_input_pw">
                     <img src="../static/image/pw.png">
                     <div class="outBox pw-outbox">
-                        <div class="inputBox pw-inputbox">
-                            <input type="password" id="pw" name="">
+                        <form method="" action="" class="inputBox pw-inputbox">
+                            <input type="password" id="pw" name="pw" />
                             <label for="pw">PASSWORD</label>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="login-btn">Login</div>
+            <input class="login-btn" type="submit" value="login" />
             <div class="other-option">
                 <div>
                     <a href="#" class="other-option_signin">Join us!</a>
@@ -343,7 +344,7 @@
 
             <!-- </div> -->
         </div>
-
+        </center>
 
 
         <a href="#" id="exit-loginbox">x</a>

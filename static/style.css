@@ -191,6 +191,10 @@ a {
      transform:scale(.85) translate(-10px, -48px);
     }
 
+.login-popup center {
+    margin: auto;
+}
+
 
 .login-wrap {
     position: relative;
@@ -807,10 +811,10 @@ margin: 0 10px;
     width: 127px;
     margin-top: 220px;
 }
-
+/* 
 .other-option {
     transform: translate(0, 0px);
-}
+} */
 
 .login-title {
     margin-top: 70px;
@@ -823,9 +827,9 @@ margin: 0 10px;
 }
 
 
-.other-option div {
+/* .other-option div {
     transform: translate(0, 40px);
-}
+} */
 
 }
 
@@ -918,10 +922,10 @@ margin: 0 10px;
         font-size: 50px;
     }
 
-    .login-btn {
+    /* .login-btn {
         margin-top: 250px;
         transform: translateX(13px);
-    }
+    } */
 
 }
 @media (max-width: 480px) {
