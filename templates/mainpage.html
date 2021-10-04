@@ -70,6 +70,19 @@
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
     <script defer src="/static/js/slide2.js"></script>
+    <script>Kakao.init('6c488a809443edb2caac91994d2af0a5');Kakao.isInitialized();</script>
+    <script defer src="/static/js/sharing.js"></script>
+
+   
+ 
+    <script>
+        function startToAnswer() {
+            alert('Do you want to start?')
+        }
+    </script>
+
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 </head>
 
@@ -88,8 +101,8 @@
             <div class="Q_wrapper">
                 <div class="Q_text">QUES</div>
 
-                <div class="Q_image">
-                    <img class="logo" src="../static/image/q-logo-black.png"
+                <div class="Q_image" onclick="startToAnswer()">
+                    <img class="logo"  src="../static/image/q-logo-black.png"
                         onmouseover="this.src='../static/image/q-logo-white.png'"
                         onmouseout="this.src='../static/image/q-logo-black.png'">
                 </div>
@@ -280,7 +293,7 @@
         <div class="footer_icon">
             <ul>
                 <li>
-                    <a href='#' class="kakaotalk">
+                    <a style="cursor:pointer" class="kakaotalk" onclick="js:kakaoShare()">
                         <img src="/static/image/kakaotalk.svg">
                         <span>KakaoTalk</span>
                     </a>
@@ -332,7 +345,7 @@
                     </div>
                 </div>
             </div>
-            <input class="login-btn" type="submit" value="login" />
+            <div onclick="login()" class="login-btn" type="submit">Login</div>
             <div class="other-option">
                 <div>
                     <a href="#" class="other-option_signin">Join us!</a>
