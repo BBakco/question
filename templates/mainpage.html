@@ -107,7 +107,7 @@
                     let bike6 = rows[6]['parkingBikeTotCnt']
                     let bike7 = rows[7]['parkingBikeTotCnt']
 
-                    let temp_html = `<ul class="qna-showlist" data-position="0">
+                    let temp_html = `
                     <li class="qna-showcard qna-showcard-1">
                         <div class="show-question-container">
                             <div class="show-question-text">${bike1}</div>
@@ -178,10 +178,10 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                
                 `
                     
-                    $('.qna-desc').append(temp_html);
+                    $('.qna-showlist').append(temp_html);
                     
                     var windowWidth = $( window ).width();
 
@@ -325,8 +325,8 @@ function moveSlide(num) {
                 <div class="qna-desc">
                     다른 사람들은 지금 어떤 생각을 하고 있을까요?
                 </div>
-                <!--<ul class="qna-showlist" data-position="0">
-                    <li class="qna-showcard qna-showcard-1">
+                <ul class="qna-showlist" data-position="0">
+                    <!--<li class="qna-showcard qna-showcard-1">
                         <div class="show-question-container">
                             <div class="show-question-text">Q1<br>질문입니다.</div>
                         </div>
@@ -409,8 +409,8 @@ function moveSlide(num) {
                                 200 공백제외 145)
                             </div>
                         </div>
-                    </li>
-                </ul>-->
+                    </li>-->
+                </ul>
 
             </div>
 
