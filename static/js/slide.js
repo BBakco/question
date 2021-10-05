@@ -1,3 +1,4 @@
+
 // 화면 너비//
 var windowWidth = $( window ).width();
 
