@@ -1,4 +1,3 @@
-
 // 화면 너비//
 var windowWidth = $( window ).width();
 
@@ -75,7 +74,7 @@ function moveSlide(num) {
     }
 }
 
-//이전 버전
+// 이전 버전
 // qnaBox.style.width = (cardWidth + cardMargin) * cardCount - cardMargin + 'px';
 
 // function moveSlide1(num) {

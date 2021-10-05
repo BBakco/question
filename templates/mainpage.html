@@ -64,7 +64,7 @@
 
 
     <!-- <script src="js/main.js"></script> -->
-    <script defer src="/static/js/slide.js"></script>
+    
     <script defer src="/static/js/backtotop.js"></script>
     <script defer src="/static/js/display.js"></script>
     <script defer src="/static/js/popup.js"></script>
@@ -140,7 +140,7 @@
                     </li>
                     <li class="qna-showcard qna-showcard-4">
                         <div class="show-question-container">
-                            <div class="show-question-text">Q4<br>${bike4}</div>
+                            <div class="show-question-text">${bike4}</div>
                         </div>
                         <div class="show-answer-container">
                             <div class="show-answer-text">
@@ -150,7 +150,7 @@
                     </li>
                     <li class="qna-showcard qna-showcard-5">
                         <div class="show-question-container">
-                            <div class="show-question-text">Q5<br>${bike5}</div>
+                            <div class="show-question-text">${bike5}</div>
                         </div>
                         <div class="show-answer-container">
                             <div class="show-answer-text">
@@ -181,8 +181,8 @@
                 </ul>
                 `
                     
-                    
                     $('.qna-desc').append(temp_html);
+                    
                     var windowWidth = $( window ).width();
 
 
@@ -254,9 +254,11 @@ function moveSlide(num) {
 
         },600)
 
+        
     }
 }
-                }
+               
+                } 
             
             }
             
@@ -517,9 +519,9 @@ function moveSlide(num) {
                 <div class="login-container_input_id">
                     <img src="../static/image/id.png">
                     <div class="outBox id-outbox">
-                        <form method="" action="" class="inputBox id-inputbox">
-                            <input type="text" id="id" name="id" />
-                            <label for="id">ID</label>
+                        <form method="" action="" class="inputBox email-inputbox">
+                            <input type="text" id="email" name="email" autocomplete="off"/>
+                            <label for="email">email</label>
                         </form>
                     </div>
                 </div>
@@ -556,7 +558,6 @@ function moveSlide(num) {
     </div>
     <div class="dim">
     </div>
-
 
 </body>
 
