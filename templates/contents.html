@@ -32,6 +32,10 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <style>
+        * {
+            margin : 0;
+            padding: 0;
+        }
         body {
             /* background-color: rgb(68,68,68); */
             background-color: white;
@@ -40,7 +44,7 @@
 
         .wrap {
             width: 60vw;
-            height: 96vh;
+            height: 87vh;
             display: block;
             margin: auto;
             overflow: hidden;
@@ -49,7 +53,7 @@
 
         .question {
             background-color: rgb(0, 0, 0, 0);
-            height: 100vh;
+            height: 93vh;
             width: 60vw;
             display: table-cell;
             vertical-align: middle;
@@ -143,13 +147,58 @@
             border-left: none;
             border-right: none;
             /* border-bottom: 0.55vh solid #ff3300; */
-            /* border-bottom: 0.55vh solid #ff5d34; */
-            border-bottom: 0.55vh solid;
-            border-image: linear-gradient(to right, rgb(255, 156, 156),rgb(255, 245, 160));
+            border-bottom: 0.55vh solid #ff5d34;
+            /* border-bottom: 0.55vh solid;
+            border-image: linear-gradient(to right, rgb(255, 156, 156),rgb(255, 245, 160)); */
             border-image-slice: 1;
         }
 
     </style>
+    <style> /*헤더 스타일*/
+        #nav {
+            width: 100vw;
+            height: 7vh;
+            background: #ff3300;
+            display: inline-flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .mypagebtn, .logoutbtn {
+            color: white;
+            margin: 20px;
+            padding: 30px 30px 0 0;
+            text-decoration: none;
+        }
+ 
+        .mypage-content {
+            display: none;
+            position: absolute;
+            background: #ffefdf;
+            min-width: 150px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .mypage-content a {
+            color: #ff3300;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .mypage-content a:hover {background: gray:}
+        .dropdown:hover .mypage-content {display: block;}
+        .dropdown:hover .mypagebtn {background: #ff3300}
+
+        footer {
+            width: 100vw;
+            height: 6vh;
+            background: #ff3300;
+            position: absolute;
+        }
+    </style>
+
 
     <script>
         function qna_submit_btn() { /*하이픈으로 하면 작동 안해서 언더바로 함. 임의 기능임*/
@@ -159,21 +208,9 @@
 
     <script>
         //페이지 로딩시 랜덤 질문 from JSON. 서울시 따릉이 JSON 연습..
+        //2-12 강의에선 다음과 같이 작성함>>  $(document).ready(function(){로딩직후 실행할 코드}); 
         window.onload = function() {
-            $.ajax({
-                type: "GET",
-                url: "http://spartacodingclub.shop/sparta_api/seoulbike",
-                data: {},
-                success: function (response) {
-                    let rows = response['getStationList']['row']
-                    let i = Math.floor(Math.random() * rows.length)
-                    let name = rows[i]['stationName']
-                    let bike = rows[i]['parkingBikeTotCnt']
-
-                    let temp_html = `${name} : ${bike}`
-                    $('#station').append(temp_html);
-                }
-            })
+            randomStation()
         }
 
 
@@ -206,17 +243,42 @@
             }
         }
     </script>
+    <script>
+     /*로그아웃 알림 로그아웃*/
+        function confirmLogout() {
+            if (confirm("로그아웃 하시겠습니까?")) {
+                location.href = "<c:url value ='/member/logout'/>";
+            }
+        }
+
+    </script>
 
 </head>
 
 <body>
+    <header>
+        <div id="nav">
+            <div class="dropdown">
+                <a class="mypagebtn">My page</a>
+                <div class="mypage-content">
+                    <a class="" href="#">다른사람 답변보기</a>
+                    <a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
+                    <a class="deletebtn" type="button" href="">탈퇴하기</a>
+                </div>
+            </div>
+            <div id="logbtn">
+              <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
+            </div>
+        </div>
+    </header>	
+
     <div class="wrap">
         <div class="question fade-in overlay" onClick="
-        if(this.style.height === '100vh') { 
-            this.style.height = '68vh';
+        if(this.style.height === '93vh') { 
+            this.style.height = '60vh';
         }
         else {
-            this.style.height = '100vh';
+            this.style.height = '93vh';
         }
         ">
             <span style='font-size: 5vh;'>Q.</span>
@@ -235,6 +297,7 @@
         </div>
     </div>
 
+    <footer></footer>
 </body>
 
 </html>
