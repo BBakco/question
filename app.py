@@ -37,6 +37,7 @@ def home_get():
 
     return jsonify({'home_q': home_question,'home_a': home_answer})
 
+
 # contents
 @app.route('/contents/get', methods=['GET'])
 def contents_get():
@@ -64,6 +65,14 @@ def contents_post():
     db.contents.insert_one(doc)
 
     return jsonify({'msg': '저장되었습니다.'})
+
+
+# mypage
+@app.route('/mypage/get', methods=['GET'])
+def read_answers():
+    answers = list(db.mypage_sample.find({'id':'id1'}, {'_id': False}))
+    return jsonify({'all_answers': answers})
+
 
 
 if __name__ == '__main__':
