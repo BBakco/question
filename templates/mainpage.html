@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <head>
+    <meta charset="utf-8">
     <meta name="author" content="BBakco" />
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -66,11 +67,11 @@
     <!-- <script src="js/main.js"></script> -->
     
     <script defer src="/static/js/backtotop.js"></script>
-    <script defer src="/static/js/display.js"></script>
+    <!-- <script defer src="/static/js/display.js"></script> -->
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
   
-    <script>Kakao.init('6c488a809443edb2caac91994d2af0a5');Kakao.isInitialized();</script>
+{#    <script>Kakao.init('6c488a809443edb2caac91994d2af0a5');Kakao.isInitialized();</script>#}
     <script defer src="/static/js/sharing.js"></script>
 
    
@@ -79,6 +80,26 @@
         function startToAnswer() {
             alert('Do you want to start?')
         }
+    </script>
+
+     <script>
+         function login() {
+            let Email = $('#email').val()
+            let password = $('#pw').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/login/post",
+                data: {
+                    email_give: Email,
+                    pw_give: password
+                },
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.replace('/');
+                }
+            });
+         }
     </script>
 
 <script>
@@ -182,8 +203,8 @@
                 `
                     
                     $('.qna-showlist').append(temp_html);
-                    
-                    var windowWidth = $( window ).width();
+
+var windowWidth = $( window ).width();
 
 
 let slideNext = document.querySelector(".slide-next");
@@ -214,7 +235,7 @@ function makeClone() {
     setTimeout(function(){
         qnaBox.classList.add('animated');
     },100)
-    
+
 }
 
 function updateWidth() {
@@ -254,9 +275,10 @@ function moveSlide(num) {
 
         },600)
 
-        
+
     }
 }
+
                
                 } 
             
@@ -272,7 +294,7 @@ function moveSlide(num) {
 
 
 <!--카톡 링크 공유하기 하려면 필요하다는 부분-->
-<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+{#<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>#}
 
 </head>
 
@@ -291,11 +313,11 @@ function moveSlide(num) {
             <div class="Q_wrapper">
                 <div class="Q_text">QUES</div>
 
-                <div class="Q_image" onclick="startToAnswer()">
+                <a href="/contents" class="Q_image" onclick="startToAnswer()">
                     <img class="logo"  src="../static/image/q-logo-black.png"
                         onmouseover="this.src='../static/image/q-logo-white.png'"
                         onmouseout="this.src='../static/image/q-logo-black.png'">
-                </div>
+                </a>
 
                 <div class="Q_text">TION</div>
             </div>
@@ -325,7 +347,7 @@ function moveSlide(num) {
                 <div class="qna-desc">
                     다른 사람들은 지금 어떤 생각을 하고 있을까요?
                 </div>
-                <ul class="qna-showlist" data-position="0">
+                <ul class="qna-showlist" id="qna-showlist" data-position="0">
                     <!--<li class="qna-showcard qna-showcard-1">
                         <div class="show-question-container">
                             <div class="show-question-text">Q1<br>질문입니다.</div>
@@ -515,30 +537,32 @@ function moveSlide(num) {
         <div class="login-wrap">
             <div class="login-title">QUES<span>?</span>TION</div>
             <!-- <div class="login-wrap2"> -->
-            <div class="login-container_input">
+{#            <form method="POST" action="">#}
+                <div class="login-container_input">
                 <div class="login-container_input_id">
                     <img src="../static/image/id.png">
                     <div class="outBox id-outbox">
-                        <form method="" action="" class="inputBox email-inputbox">
+                        <div class="inputBox email-inputbox">
                             <input type="text" id="email" name="email" autocomplete="off"/>
                             <label for="email">email</label>
-                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="login-container_input_pw">
                     <img src="../static/image/pw.png">
                     <div class="outBox pw-outbox">
-                        <form method="" action="" class="inputBox pw-inputbox">
+                        <div class="inputBox pw-inputbox">
                             <input type="password" id="pw" name="pw" />
                             <label for="pw">PASSWORD</label>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div onclick="login()" class="login-btn" type="submit">Login</div>
+                </div>
+            <div class="login-btn" onclick="login()">Login</div>
+{#                </form>#}
             <div class="other-option">
                 <div>
-                    <a href="#" class="other-option_signup">Sign up!</a>
+                    <a href="/register" class="other-option_signup">Sign up!</a>
                 </div>
                 <div>
                     <a href="#" class="other-option_forgot">Forgot ID or PW?</a>
@@ -558,6 +582,8 @@ function moveSlide(num) {
     </div>
     <div class="dim">
     </div>
+
+
 
 </body>
 
