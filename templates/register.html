@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta name="author" content="BBakco" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+
+    <!-- http://ogp.me/ -->
+    <meta property="og:type" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
+    <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
+    <meta property="twitter:card" content="">
+    <meta property="twitter:site" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
+    <meta property="twitter:url" content="">
+
+    <title>BBakco</title>
+
+    <!-- CSS reset, CSS style, Jquery import -->
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/signupstyle.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    
+    <script>
+        function register() {
+            let username = $('#username').val()
+            let email = $('#email').val()
+            let pw = $('#pw').val()
+            let repeatpw = $('#repeatpw').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/register",
+                data: {
+                    username_give: username,
+                    email_give: email,
+                    pw_give: pw,
+                    repeatpw_give: repeatpw
+                },
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.replace('/');
+                }
+            })
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="body__container">
+        <section class="inner">
+            <h1>LOGO DESIGN</h1>
+            <form id="sign-form" method="POST" action="">
+                <div class="input-area">
+                    <input id="username" class="input--text" type="text" autocomplete="off" required>
+                    <label for="username">User Name</label>
+                </div>
+                <div class="input-area">
+                    <input id="email" class="input--text" type="email" autocomplete="off" required>
+                    <label for="email">E-mail</label>
+                </div class="input-area">
+                <div class="input-area">
+                    <input id="pw" class="input--text" type="password" autocomplete="off" required>
+                    <label for="pw">Password</label>
+                </div>
+                <div class="input-area">
+                    <input id="repeatpw" class="input--text" type="password" autocomplete="off" required>
+                    <label for="repeatpw">Repeat Password</label>
+                </div>
+                <div class="btn-area">
+                    <button onclick="register()" class="btn" type="submit">Sign up</button>
+                </div>
+            </form>
+        </section>
+    </div>
+
+
+</body>
+
+</html>

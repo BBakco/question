@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <head>
+    <meta charset="utf-8">
     <meta name="author" content="BBakco" />
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -34,6 +35,10 @@
     <link rel="stylesheet" href="/static/style.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+
+
+
+
     <!-- 일반적인 fabicon 설정 (정현) -->
     <link rel="icon" href="../static/image/fabicon.ico">
     <!-- 아이폰용 fabicon 설정 (정현) -->
@@ -60,13 +65,215 @@
 
 
     <!-- <script src="js/main.js"></script> -->
-    <script defer src="/static/js/slide.js"></script>
+    
     <script defer src="/static/js/backtotop.js"></script>
     <script defer src="/static/js/display.js"></script>
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
+  
+    <script>Kakao.init('6c488a809443edb2caac91994d2af0a5');Kakao.isInitialized();</script>
+    <script defer src="/static/js/sharing.js"></script>
+
+   
+ 
+    <script>
+        function startToAnswer() {
+            alert('Do you want to start?')
+        }
+    </script>
+
+<script>
+
+   //페이지 로딩시 랜덤 질문 from JSON. 서울시 따릉이 JSON 연습..
+        window.onload = function() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/seoulbike",
+                data: {},
+                success: function (response) {
+                    let rows = response['getStationList']['row']
+                    
+                    let name1 = rows[1]['stationName']
+                    let name2 = rows[2]['stationName']
+                    let name3 = rows[3]['stationName']
+                    let name4 = rows[4]['stationName']
+                    let name5 = rows[5]['stationName']
+                    let name6 = rows[6]['stationName']
+                    let name7 = rows[7]['stationName']
+                    let bike1 = rows[1]['parkingBikeTotCnt']
+                    let bike2 = rows[2]['parkingBikeTotCnt']
+                    let bike3 = rows[3]['parkingBikeTotCnt']
+                    let bike4 = rows[4]['parkingBikeTotCnt']
+                    let bike5 = rows[5]['parkingBikeTotCnt']
+                    let bike6 = rows[6]['parkingBikeTotCnt']
+                    let bike7 = rows[7]['parkingBikeTotCnt']
+
+                    let temp_html = `
+                    <li class="qna-showcard qna-showcard-1">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike1}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name1}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-2">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike2}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name2}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-3">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike3}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name3}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-4">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike4}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name4}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-5">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike5}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name5}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-6">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike6}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name6}
+                            </div>
+                        </div>
+                    </li>
+                    <li class="qna-showcard qna-showcard-7">
+                        <div class="show-question-container">
+                            <div class="show-question-text">${bike7}</div>
+                        </div>
+                        <div class="show-answer-container">
+                            <div class="show-answer-text">
+                                ${name7}
+                            </div>
+                        </div>
+                    </li>
+                
+                `
+                    
+                    $('.qna-showlist').append(temp_html);
+                    
+                    var windowWidth = $( window ).width();
 
 
+let slideNext = document.querySelector(".slide-next");
+let slidePrev = document.querySelector(".slide-prev");
+
+let qnaBox = document.querySelector(".qna-showlist");
+let card = document.querySelectorAll(".qna-showlist li");
+let currentIndex = 0;
+let cardCount = card.length;
+let cardWidth = 340;
+let cardMargin = 40;
+
+makeClone();
+
+function makeClone() {
+    for (var i = 0; i < cardCount; i++) {
+        var cloneCard = card[i].cloneNode(true);
+        cloneCard.classList.add('clone');
+        qnaBox.appendChild(cloneCard);
+    }
+    for (var i =cardCount -1; i>=0; i--) {
+        var cloneCard = card[i].cloneNode(true);
+        cloneCard.classList.add('clone');
+        qnaBox.prepend(cloneCard);
+    }
+    updateWidth();
+    setInitialPos();
+    setTimeout(function(){
+        qnaBox.classList.add('animated');
+    },100)
+    
+}
+
+function updateWidth() {
+    var currentCards = document.querySelectorAll(".qna-showlist li");
+    var newCardCount = currentCards.length;
+
+    var newWidth = (cardWidth + cardMargin) * newCardCount - cardMargin + 'px';
+    qnaBox.style.width = newWidth;
+}
+
+function setInitialPos() {
+    var initialTranslateValue = -(cardWidth + cardMargin)*cardCount;
+    qnaBox.style.transform = 'translateX(' + initialTranslateValue+'px)';
+
+}
+
+slideNext.addEventListener('click', function(){
+    moveSlide(currentIndex + 1)
+})
+
+slidePrev.addEventListener('click', function(){
+    moveSlide(currentIndex - 1)
+})
+
+function moveSlide(num) {
+    qnaBox.style.left = -num * (cardWidth + cardMargin) + 'px';
+    currentIndex = num;
+    console.log(currentIndex, cardCount);
+    if (currentIndex == cardCount || currentIndex == -cardCount) {
+        setTimeout(function(){
+            qnaBox.classList.remove('animated');
+            qnaBox.style.left = '0px';
+            currentIndex = 0;
+        },500);
+        setTimeout(function(){
+            qnaBox.classList.add('animated');
+
+        },600)
+
+        
+    }
+}
+               
+                } 
+            
+            }
+            
+            )
+            
+            
+        }
+        
+        
+</script>
+
+
+<!--카톡 링크 공유하기 하려면 필요하다는 부분-->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
 </head>
 
@@ -84,13 +291,13 @@
         <div class="section_01">
             <div class="Q_wrapper">
                 <div class="Q_text">QUES</div>
-                <div class="Q_image">
-                    <div class="Q_image">
-                        <img class="logo" src="../static/image/q-logo-black.png"
-                            onmouseover="this.src='../static/image/q-logo-white.png'"
-                            onmouseout="this.src='../static/image/q-logo-black.png'">
-                    </div>
-                </div>
+
+                <a href="/contents" class="Q_image" onclick="startToAnswer()">
+                    <img class="logo"  src="../static/image/q-logo-black.png"
+                        onmouseover="this.src='../static/image/q-logo-white.png'"
+                        onmouseout="this.src='../static/image/q-logo-black.png'">
+                </a>
+
                 <div class="Q_text">TION</div>
             </div>
         </div>
@@ -120,7 +327,7 @@
                     다른 사람들은 지금 어떤 생각을 하고 있을까요?
                 </div>
                 <ul class="qna-showlist" data-position="0">
-                    <li class="qna-showcard qna-showcard-1">
+                    <!--<li class="qna-showcard qna-showcard-1">
                         <div class="show-question-container">
                             <div class="show-question-text">Q1<br>질문입니다.</div>
                         </div>
@@ -203,7 +410,7 @@
                                 200 공백제외 145)
                             </div>
                         </div>
-                    </li>
+                    </li>-->
                 </ul>
 
             </div>
@@ -277,7 +484,7 @@
         <div class="footer_icon">
             <ul>
                 <li>
-                    <a href='#' class="kakaotalk">
+                    <a style="cursor:pointer" class="kakaotalk" onclick="js:kakaoShare()">
                         <img src="/static/image/kakaotalk.svg">
                         <span>KakaoTalk</span>
                     </a>
@@ -294,41 +501,64 @@
                     </a>
                 </li>
             </ul>
+            <div class="footer-icon_title">SHARE US</div>
         </div>
         <div class="footer">
             <p> "?"(QUESTION) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코 </p>
             <p> copyrightⓒ2021 빡코 All rights reserved </p>
+            <img class=collaboration src="/static/image/collaboration.png">
         </div>
     </footer>
 
     <!-- login popup창 만들기 -->
     <div class="login-popup" id="pop1">
-        <div class="login-title">LOGIN</div>
-        <hr id="hr1">
-        <div class="login-container id-container">
-            <img src="../static/image/id.png">
-            <div class="outBox id-outbox">
-                <div class="inputBox id-inputbox">
-                    <input type="text" id="id" name="">
-                    <label for="id">ID</label>
+        <center>
+        <div class="login-wrap">
+            <div class="login-title">QUES<span>?</span>TION</div>
+            <!-- <div class="login-wrap2"> -->
+            <div class="login-container_input">
+                <div class="login-container_input_id">
+                    <img src="../static/image/id.png">
+                    <div class="outBox id-outbox">
+                        <form method="" action="" class="inputBox email-inputbox">
+                            <input type="text" id="email" name="email" autocomplete="off"/>
+                            <label for="email">email</label>
+                        </form>
+                    </div>
+                </div>
+                <div class="login-container_input_pw">
+                    <img src="../static/image/pw.png">
+                    <div class="outBox pw-outbox">
+                        <form method="" action="" class="inputBox pw-inputbox">
+                            <input type="password" id="pw" name="pw" />
+                            <label for="pw">PASSWORD</label>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="login-container pw-container">
-            <img src="../static/image/pw.png">
-            <div class="outBox pw-outbox">
-                <div class="inputBox pw-inputbox">
-                    <input type="text" id="pw" name="">
-                    <label for="pw">PASSWORD</label>
+            <div onclick="login()" class="login-btn" type="submit">Login</div>
+            <div class="other-option">
+                <div>
+                    <a href="/register" class="other-option_signup">Sign up!</a>
+                </div>
+                <div>
+                    <a href="#" class="other-option_forgot">Forgot ID or PW?</a>
                 </div>
             </div>
+
+            <!-- </div> -->
         </div>
-        <a href="#" id="exit-loginbox">X</a>
+        </center>
+
+
+        <a href="#" id="exit-loginbox">x</a>
+
+    </div>
+
 
     </div>
     <div class="dim">
     </div>
-
 
 </body>
 
