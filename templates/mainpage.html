@@ -64,7 +64,7 @@
     <!-- <script src="js/main.js"></script> -->
 
     <script defer src="/static/js/backtotop.js"></script>
-    <script defer src="/static/js/display.js"></script>
+{#    <script defer src="/static/js/display.js"></script>#}
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
 
@@ -80,190 +80,168 @@
     </script>
 
     <script>
-        //페이지 로딩시 랜덤 질문 from JSON.
         window.onload = function () {
             $.ajax({
-                    type: "GET",
-                    url: "http://spartacodingclub.shop/sparta_api/seoulbike",
-                    data: {},
-                    success: function (response) {
-                        let rows = response['getStationList']['row']
+                type: "GET",
+                url: "/home/get",
+                data: {},
+                success: function (response) {
+                    let questions = response['home_q']
+                    let answers = response['home_a']
 
-                        let name1 = rows[1]['stationName']
-                        let name2 = rows[2]['stationName']
-                        let name3 = rows[3]['stationName']
-                        let name4 = rows[4]['stationName']
-                        let name5 = rows[5]['stationName']
-                        let name6 = rows[6]['stationName']
-                        let name7 = rows[7]['stationName']
-                        let bike1 = rows[1]['parkingBikeTotCnt']
-                        let bike2 = rows[2]['parkingBikeTotCnt']
-                        let bike3 = rows[3]['parkingBikeTotCnt']
-                        let bike4 = rows[4]['parkingBikeTotCnt']
-                        let bike5 = rows[5]['parkingBikeTotCnt']
-                        let bike6 = rows[6]['parkingBikeTotCnt']
-                        let bike7 = rows[7]['parkingBikeTotCnt']
+                    let question_0 = questions[questions.length-1]['question']
+                    let question_1 = questions[questions.length-2]['question']
+                    let question_2 = questions[questions.length-3]['question']
+                    let question_3 = questions[questions.length-4]['question']
+                    let question_4 = questions[questions.length-5]['question']
+                    let question_5 = questions[questions.length-6]['question']
+                    let question_6 = questions[questions.length-7]['question']
 
-                        let temp_html = `
-                    <li class="qna-showcard qna-showcard-1">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike1}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name1}
-                            </div>
-                        </div>
-                    </li>
-                    <li class="qna-showcard qna-showcard-2">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike2}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name2}
-                            </div>
-                        </div>
-                    </li>
-                    <li class="qna-showcard qna-showcard-3">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike3}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name3}
-                            </div>
-                        </div>
-                    </li>
-                    <li class="qna-showcard qna-showcard-4">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike4}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name4}
-                            </div>
-                        </div>
-                    </li>
-                    <li class="qna-showcard qna-showcard-5">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike5}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name5}
-                            </div>
-                        </div>
-                    </li>
-                    <li class="qna-showcard qna-showcard-6">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike6}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name6}
-                            </div>
-                        </div>
-                    </li>
-                    <li class="qna-showcard qna-showcard-7">
-                        <div class="show-question-container">
-                            <div class="show-question-text">${bike7}</div>
-                        </div>
-                        <div class="show-answer-container">
-                            <div class="show-answer-text">
-                                ${name7}
-                            </div>
-                        </div>
-                    </li>
-                
-                `
+                    let answer_0 = answers[answers.length-1]['answer']
+                    let answer_1 = answers[answers.length-2]['answer']
+                    let answer_2 = answers[answers.length-3]['answer']
+                    let answer_3 = answers[answers.length-4]['answer']
+                    let answer_4 = answers[answers.length-5]['answer']
+                    let answer_5 = answers[answers.length-6]['answer']
+                    let answer_6 = answers[answers.length-7]['answer']
 
-                        $('.qna-showlist').append(temp_html);
+                    let temp_html = `<li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_0}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_0}</div>
+                                            </div>
+                                     </li>
+                                     <li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_1}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_1}</div>
+                                            </div>
+                                     </li>
+                                     <li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_2}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_2}</div>
+                                            </div>
+                                     </li>
+                                     <li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_3}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_3}</div>
+                                            </div>
+                                     </li>
+                                     <li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_4}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_4}</div>
+                                            </div>
+                                     </li>
+                                     <li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_5}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_5}</div>
+                                            </div>
+                                     </li>
+                                     <li class=qna-showcard qna-showcard-1">
+                                            <div class="show-question-container">
+                                                <div class="show-question-text">${question_6}</div>
+                                            </div>
+                                            <div class="show-answer-container">
+                                                <div class="show-answer-text">${answer_6}</div>
+                                            </div>
+                                     </li>`
 
-                        var windowWidth = $(window).width();
+                    $('#qna-showlist').append(temp_html);
+
+                    // 화면 너비//
+                    var windowWidth = $(window).width();
 
 
-                        let slideNext = document.querySelector(".slide-next");
-                        let slidePrev = document.querySelector(".slide-prev");
+                    let slideNext = document.querySelector(".slide-next");
+                    let slidePrev = document.querySelector(".slide-prev");
 
-                        let qnaBox = document.querySelector(".qna-showlist");
-                        let card = document.querySelectorAll(".qna-showlist li");
-                        let currentIndex = 0;
-                        let cardCount = card.length;
-                        let cardWidth = 340;
-                        let cardMargin = 40;
+                    let qnaBox = document.querySelector(".qna-showlist");
+                    let card = document.querySelectorAll(".qna-showlist li");
+                    let currentIndex = 0;
+                    let cardCount = card.length;
+                    let cardWidth = 340;
+                    let cardMargin = 40;
 
-                        makeClone();
+                    makeClone();
 
-                        function makeClone() {
-                            for (var i = 0; i < cardCount; i++) {
-                                var cloneCard = card[i].cloneNode(true);
-                                cloneCard.classList.add('clone');
-                                qnaBox.appendChild(cloneCard);
-                            }
-                            for (var i = cardCount - 1; i >= 0; i--) {
-                                var cloneCard = card[i].cloneNode(true);
-                                cloneCard.classList.add('clone');
-                                qnaBox.prepend(cloneCard);
-                            }
-                            updateWidth();
-                            setInitialPos();
-                            setTimeout(function () {
-                                qnaBox.classList.add('animated');
-                            }, 100)
-
+                    function makeClone() {
+                        for (var i = 0; i < cardCount; i++) {
+                            var cloneCard = card[i].cloneNode(true);
+                            cloneCard.classList.add('clone');
+                            qnaBox.appendChild(cloneCard);
                         }
-
-                        function updateWidth() {
-                            var currentCards = document.querySelectorAll(".qna-showlist li");
-                            var newCardCount = currentCards.length;
-
-                            var newWidth = (cardWidth + cardMargin) * newCardCount - cardMargin + 'px';
-                            qnaBox.style.width = newWidth;
+                        for (var i = cardCount - 1; i >= 0; i--) {
+                            var cloneCard = card[i].cloneNode(true);
+                            cloneCard.classList.add('clone');
+                            qnaBox.prepend(cloneCard);
                         }
-
-                        function setInitialPos() {
-                            var initialTranslateValue = -(cardWidth + cardMargin) * cardCount;
-                            qnaBox.style.transform = 'translateX(' + initialTranslateValue + 'px)';
-
-                        }
-
-                        slideNext.addEventListener('click', function () {
-                            moveSlide(currentIndex + 1)
-                        })
-
-                        slidePrev.addEventListener('click', function () {
-                            moveSlide(currentIndex - 1)
-                        })
-
-                        function moveSlide(num) {
-                            qnaBox.style.left = -num * (cardWidth + cardMargin) + 'px';
-                            currentIndex = num;
-                            console.log(currentIndex, cardCount);
-                            if (currentIndex == cardCount || currentIndex == -cardCount) {
-                                setTimeout(function () {
-                                    qnaBox.classList.remove('animated');
-                                    qnaBox.style.left = '0px';
-                                    currentIndex = 0;
-                                }, 500);
-                                setTimeout(function () {
-                                    qnaBox.classList.add('animated');
-
-                                }, 600)
-
-
-                            }
-                        }
+                        updateWidth();
+                        setInitialPos();
+                        setTimeout(function () {
+                            qnaBox.classList.add('animated');
+                        }, 100)
 
                     }
 
+                    function updateWidth() {
+                        var currentCards = document.querySelectorAll(".qna-showlist li");
+                        var newCardCount = currentCards.length;
+
+                        var newWidth = (cardWidth + cardMargin) * newCardCount - cardMargin + 'px';
+                        qnaBox.style.width = newWidth;
+                    }
+
+                    function setInitialPos() {
+                        var initialTranslateValue = -(cardWidth + cardMargin) * cardCount;
+                        qnaBox.style.transform = 'translateX(' + initialTranslateValue + 'px)';
+
+                    }
+
+                    slideNext.addEventListener('click', function () {
+                        moveSlide(currentIndex + 1)
+                    })
+
+                    slidePrev.addEventListener('click', function () {
+                        moveSlide(currentIndex - 1)
+                    })
+
+                    function moveSlide(num) {
+                        qnaBox.style.left = -num * (cardWidth + cardMargin) + 'px';
+                        currentIndex = num;
+                        console.log(currentIndex, cardCount);
+                        if (currentIndex == cardCount || currentIndex == -cardCount) {
+                            setTimeout(function () {
+                                qnaBox.classList.remove('animated');
+                                qnaBox.style.left = '0px';
+                                currentIndex = 0;
+                            }, 500);
+                            setTimeout(function () {
+                                qnaBox.classList.add('animated');
+
+                            }, 600)
+
+
+                        }
+                    }
                 }
-            )
-
-
+            })
         }
-
-
     </script>
 
 
@@ -319,7 +297,7 @@
             <div class="qna-desc">
                 다른 사람들은 지금 어떤 생각을 하고 있을까요?
             </div>
-            <ul class="qna-showlist" data-position="0">
+            <ul id="qna-showlist" class="qna-showlist" data-position="0">
                 <!--<li class="qna-showcard qna-showcard-1">
                     <div class="show-question-container">
                         <div class="show-question-text">Q1<br>질문입니다.</div>
