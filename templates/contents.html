@@ -204,12 +204,12 @@
     <script>
         //페이지 로딩시 랜덤 질문 from JSON.
         window.onload = function () {
-            randomStation()
+            getQuestions()
         }
 
 
         //버튼 클릭시 랜덤 질문 from JSON.
-        function randomStation() {
+        function getQuestions() {
             $('#station').empty();
 
             $.ajax({
@@ -230,6 +230,7 @@
         function postAnswers() {
             let question = $('#station').text()
             let answer = $('#A-input-id').val()
+            $("#A-input-id").val(""); // input 박스 초기화
 
             $.ajax({
                 type: "POST",
@@ -293,7 +294,7 @@
             <span style='font-size: 5vh;'>Q.</span>
             <div id= 'station'></div>
             <span class=example onclick=cancelPropagation(event);>
-                <button class="qna-next-btn" onclick=randomStation()>다른 질문을 원하신다면 ></button>
+                <button class="qna-next-btn" onclick=getQuestions()>다른 질문을 원하신다면 ></button>
             </span>
 
         </div>

@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 from datetime import datetime
 
+client = MongoClient('localhost', 27017)
+db = client.dbbbackco
 app = Flask(__name__)
 
 
@@ -29,8 +31,6 @@ def contents():
 # API 역할을 하는 부분
 @app.route('/contents/get', methods=['GET'])
 def contents_get():
-    client = MongoClient('localhost', 27017)
-    db = client.dbbbackco
     questions = list(db.questions_ko.find({}, {'_id': False}))
 
     return jsonify({'all_questions': questions})
@@ -52,9 +52,6 @@ def contents_post():
         'answer': answer_receive,
         'time': now_text
     }
-
-    client = MongoClient('localhost', 27017)
-    db = client.dbbbackco
     db.contents.insert_one(doc)
 
     return jsonify({'msg': '저장되었습니다.'})
