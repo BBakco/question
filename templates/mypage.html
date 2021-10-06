@@ -2,76 +2,80 @@
 <html lang="ko">
 
 <head>
-  <meta name="author" content="BBakco" />
-  <meta name="description" content="" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+    <meta charset="utf-8">
+    <meta name="author" content="BBakco"/>
+    <meta name="description" content=""/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1"/>
 
-  <!-- http://ogp.me/ -->
-  <meta property="og:type" content="">
-  <meta property="og:site_name" content="">
-  <meta property="og:title" content="">
-  <meta property="og:description" content="">
-  <meta property="og:image" content="">
-  <meta property="og:url" content="">
+    <!-- http://ogp.me/ -->
+    <meta property="og:type" content="">
+    <meta property="og:site_name" content="">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
 
-  <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
-  <meta property="twitter:card" content="">
-  <meta property="twitter:site" content="">
-  <meta property="twitter:title" content="">
-  <meta property="twitter:description" content="">
-  <meta property="twitter:image" content="">
-  <meta property="twitter:url" content="">
+    <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
+    <meta property="twitter:card" content="">
+    <meta property="twitter:site" content="">
+    <meta property="twitter:title" content="">
+    <meta property="twitter:description" content="">
+    <meta property="twitter:image" content="">
+    <meta property="twitter:url" content="">
 
-  <title>BBakco</title>
+    <title>BBakco</title>
 
-  <!-- CSS reset, CSS style, Jquery import -->
-  <link rel="stylesheet" href="/static/reset.css">
-  <link rel="stylesheet" href="/static/style.css">
-  <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    
-  <!--영어 폰트--><!--font-family: 'Cormorant Garamond', serif; -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <!-- CSS reset, CSS style, Jquery import -->
+    <link rel="stylesheet" href="/static/reset.css">
+    <link rel="stylesheet" href="/static/mypage.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-<!--한글 폰트--><!--font-family: 'Noto Sans KR', sans-serif; -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+    <!--영어 폰트--><!--font-family: 'Cormorant Garamond', serif; -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+    <!--한글 폰트--><!--font-family: 'Noto Sans KR', sans-serif; -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+    <script defer src="/static/js/mypage.js"></script>
 
 </head>
-	<body>
-	
-		<header>
-			<div id="nav">
-				<div class="dropdown">
-					<a class="mypagebtn">My page</a>
-					<div class="mypage-content">
-						<a class="" href="#">다른사람 답변보기</a>
-						<a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
-						<a class="deletebtn" type="button" href="">탈퇴하기</a>
-					</div>
-				</div>
-				<div id="logbtn">
-				  <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
-				</div>
-			</div>
-		</header>	
-			
-		<main>
-			<center>
-			<div id="qnalist">
-				<h2>QnA</h2>
-				<div id="QnA" class="myqna_infinite">
-					<div class="cardlist">
-						<p id="sentinel" class="question">Q. 냐냐냐</p>
-						<p id="sentinel" class="answer">A.제리 안돼</p>
-					</div>
-				</div>
-			</div>
-			</center>
-		</main>	
-		
+<body>
+
+<header>
+    <div id="nav">
+        <div class="dropdown">
+            <a class="mypagebtn">My page</a>
+            <div class="mypage-content">
+                <a class="" href="#">다른사람 답변보기</a>
+                <a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
+                <a class="deletebtn" type="button" href="">탈퇴하기</a>
+            </div>
+        </div>
+        <div id="logbtn">
+            <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <center>
+        <div id="qnalist">
+            <h2>QnA</h2>
+            <div id="QnA" class="myqna_infinite">
+                <div class="cardlist">
+                    <p id="sentinel" class="question">Q. 냐냐냐</p>
+                    <p id="sentinel" class="answer">A.제리 안돼</p>
+                </div>
+            </div>
+        </div>
+    </center>
+</main>
+
 </body>
 </html>

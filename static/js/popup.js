@@ -1,14 +1,14 @@
 
 //Javascript
-var IDBox = document.querySelector('.id-outbox');
-var IDInputBox = document.querySelector('#id');
-IDInputBox.addEventListener('keyup', function(){
-    if(IDInputBox.value !== ''){
+var emailBox = document.querySelector('.id-outbox');
+var emailInputBox = document.querySelector('#email');
+emailInputBox.addEventListener('keyup', function(){
+    if(emailInputBox.value !== ''){
         //빈 값이 아닌 경우
-        IDBox.classList.add('existence');   
+        emailBox.classList.add('existence');   
     }else{
         //빈 값인 경우
-        IDBox.classList.remove('existence');   
+        emailBox.classList.remove('existence');   
     }
 });
 

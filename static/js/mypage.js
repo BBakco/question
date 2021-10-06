@@ -1,50 +1,29 @@
-	<!--비밀번호 변경-->
-	
-	<!--로그아웃 알림 로그아웃-->        
-    function confirmLogout() {
-        if( confirm("로그아웃 하시겠습니까?") ) {
+<!--로그아웃 알림, 로그아웃 -->
+ function confirmLogout() {
+        if( confirm("정말 로그아웃 하시겠습니까?") ) {
             location.href = "<c:url value ='/member/logout'/>";
         }
     }
-	<!--infinite paging->
-	const io = new IntersectionObserver((entries, observer) => {
-	entries.forEach(entry => {
-	  if (!entry.isIntersecting) return; 
-		
-	  if (page._scrollchk) return;
-		
-    observer.observe(document.getElementById('sentinel'));
-		
-    page._page += 1;
-		
-    page.list.search();
-		.
-	});
-});
-
-io.observe(document.getElementById('sentinel'));
-		
-		$.ajax({
-	url: url,
-	data: param,
-	method: "GET",
-	dataType: "json",
-	success: function (result) {
-	  console.log(result);
-	},
-	error: function (err) {
-	  console.log(err);
-	},
-	beforeSend: function () {
-    _scrollchk = true; 
-		
-		document.getElementById('list').appendChild(skeleton.show());
-    $(".loading").show();
-	},
-	complete: function () {
-    _scrollchk = false;
-		$(".loading").hide();
-    skeleton.hide();
-		
+<!--내가 쓴 글 -->
+function showmyqna() {
+	$ajax({
+		type: "GET",
+		url: "/myqna",
+		data:{},
+		success: function (response){
+			let myqnas = response['all_myqnas']
+			for(let i = 0; i < myqnas.lenght; i++) {
+				let question = myqnas[i]['question']
+				let answer = myqnas[i]['answer']
+				
+				let temp_html = `<div id="QnA" class="myqna">
+					<div class="cardlist" href="">
+						<p id="Question" class="question">Q.${question}
+						<p id="Answer" class="answer">A.${answer}`
+				$('#QnA').append(temp_html)
+				}
+			}
+		})
 	}
-});
+
+<!--다른사람이 쓴 글-->
