@@ -2,6 +2,7 @@
 <html lang="ko">
 
 <head>
+    <meta charset="utf-8">
     <meta name="author" content="BBakco" />
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -201,38 +202,45 @@
 
 
     <script>
-        function qna_submit_btn() { /*하이픈으로 하면 작동 안해서 언더바로 함. 임의 기능임*/
-            alert('저장되었습니다.')
-        }
-    </script>
-
-    <script>
-        //페이지 로딩시 랜덤 질문 from JSON. 서울시 따릉이 JSON 연습..
-        //2-12 강의에선 다음과 같이 작성함>>  $(document).ready(function(){로딩직후 실행할 코드}); 
-        window.onload = function() {
+        //페이지 로딩시 랜덤 질문 from JSON.
+        window.onload = function () {
             randomStation()
         }
 
 
-        //버튼 클릭시 랜덤 질문 from JSON. 서울시 따릉이 JSON 연습..
+        //버튼 클릭시 랜덤 질문 from JSON.
         function randomStation() {
             $('#station').empty();
 
             $.ajax({
                 type: "GET",
-                url: "http://spartacodingclub.shop/sparta_api/seoulbike",
+                url: "/contents/get",
                 data: {},
                 success: function (response) {
-                    let rows = response['getStationList']['row']
-                    let i = Math.floor(Math.random() * rows.length)
-                    let name = rows[i]['stationName']
-                    let bike = rows[i]['parkingBikeTotCnt']
-
-                    let temp_html = `${name} : ${bike}`
+                    let questions = response['all_questions']
+                    let i = Math.floor(Math.random() * questions.length)
+                    let question = questions[i]['question']
+                    let temp_html = `${question}`
                     $('#station').append(temp_html);
                 }
             })
         }
+
+        //버튼 클릭시 랜덤 질문 from JSON.
+        function postAnswers() {
+            let question = $('#station').text()
+            let answer = $('#A-input-id').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/contents/post",
+                data: {question_give: question, answer_give: answer},
+                success: function (response) { // 성공하면
+                    alert(response['msg']);
+                }
+            })
+        }
+
 
         //질문 div 클릭시 높이변화(답변창 팝업) 이벤트 전파 중단
         function cancelPropagation(event) {
@@ -243,6 +251,7 @@
             }
         }
     </script>
+
     <script>
      /*로그아웃 알림 로그아웃*/
         function confirmLogout() {
@@ -293,7 +302,7 @@
             <div class="A-input-box">
                 <input class="A-input-class" id="A-input-id" type="text" placeholder="답변을 입력해주세요.">
             </div>
-            <button onclick="qna_submit_btn()" class="qna-submit-btn">저장하기 ></button>
+            <button onclick="postAnswers()" class="qna-submit-btn">저장하기 ></button>
         </div>
     </div>
 
