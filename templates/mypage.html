@@ -2,11 +2,11 @@
 <html lang="ko">
 
 <head>
-    <meta name="author" content="BBakco"/>
-    <meta name="description" content=""/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="author" content="BBakco" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport"
-          content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1"/>
+        content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
 
     <!-- http://ogp.me/ -->
     <meta property="og:type" content="">
@@ -31,12 +31,14 @@
     <link rel="stylesheet" href="/static/style.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <!--영어 폰트--><!--font-family: 'Cormorant Garamond', serif; -->
+    <!--영어 폰트-->
+    <!--font-family: 'Cormorant Garamond', serif; -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
 
-    <!--한글 폰트--><!--font-family: 'Noto Sans KR', sans-serif; -->
+    <!--한글 폰트-->
+    <!--font-family: 'Noto Sans KR', sans-serif; -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
@@ -56,10 +58,11 @@
             justify-content: flex-end;
         }
 
-        .mypagebtn, .logoutbtn {
+        .mypagebtn,
+        .logoutbtn {
             color: white;
             margin: 20px;
-            text-size: 20px;
+            font-size: 20px;
             padding: 30px 30px 0 0;
             text-decoration: none;
         }
@@ -81,7 +84,7 @@
         }
 
         .mypage-content a:hover {
-            background: gray:
+            background: gray;
         }
 
         .dropdown:hover .mypage-content {
@@ -91,22 +94,16 @@
         .dropdown:hover .mypagebtn {
             background: #ff3300
         }
-
     </style>
 
     <script>
-        <!--
-        비밀번호
-        변경-->
-
-        <!--로그아웃 알림 로그아웃-->
+        //로그아웃 알림 로그아웃
         function confirmLogout() {
             if (confirm("로그아웃 하시겠습니까?")) {
                 location.href = "<c:url value ='/member/logout'/>";
             }
         }
-	<!--infinite
-        paging->
+        //infinite paging
         const io = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
@@ -118,7 +115,7 @@
                 page._page += 1;
 
                 page.list.search();
-            .
+
             });
         });
 
@@ -181,7 +178,6 @@
                 }
             })
         }
-
     </script>
 
 
@@ -307,39 +303,40 @@
             background: #ff3300;
             position: absolute;
         }
-
     </style>
 </head>
+
 <body>
 
-<header>
-    <div id="nav">
-        <div class="dropdown">
-            <a class="mypagebtn">My page</a>
-            <div class="mypage-content">
-                <a class="" href="#">다른사람 답변보기</a>
-                <a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
-                <a class="deletebtn" type="button" href="">탈퇴하기</a>
+    <header>
+        <div id="nav">
+            <div class="dropdown">
+                <a class="mypagebtn" href="/home">Home</a>
+                <a class="mypagebtn" href="/contents">QnA</a>
+                <!-- <div class="mypage-content">
+                    <a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
+                    <a class="deletebtn" type="button" href="">탈퇴하기</a>
+                </div> -->
+            </div>
+            <div id="logbtn">
+                <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
             </div>
         </div>
-        <div id="logbtn">
-            <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
-        </div>
-    </div>
-</header>
-<div class="wrap">
-    <h1>답변 모아보기</h1>
-    <div class="answer-list">
+    </header>
+    <div class="wrap">
+        <h1>답변 모아보기</h1>
+        <div class="answer-list">
 
-    </div>
-    <center>
-        <div class="btns">
-            <button class="change-info-btn">회원정보 변경</button>
-            <button class="logout-btn">로그아웃</button>
         </div>
+        <center>
+            <div class="btns">
+                <button class="change-info-btn" onclick="location.href='/user_info' ">회원정보 변경</button>
+                <button class="logout-btn" onclick="location.href='/home' ">로그아웃</button>
+            </div>
 
-    </center>
-</div>
-<!-- <footer></footer> -->
+        </center>
+    </div>
+    <!-- <footer></footer> -->
 </body>
+
 </html>

@@ -31,6 +31,11 @@
     <link rel="stylesheet" href="/static/signupstyle.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
 
     <script>
         function register() {
@@ -38,6 +43,8 @@
             let email = $('#email').val()
             let pw = $('#pw').val()
             let repeatpw = $('#repeatpw').val()
+
+
 
             $.ajax({
                 type: "POST",
@@ -50,9 +57,13 @@
                 },
                 success: function (response) {
                     alert(response["msg"]);
-                    window.location.replace('/');
+                    window.location.replace('/home');
+
+                    {#console.log(data)#}
                 }
             })
+
+
         }
     </script>
 
@@ -61,7 +72,7 @@
 <body>
     <div class="body__container">
         <section class="inner">
-            <h1>LOGO DESIGN</h1>
+            <h1>QUES<span style="font-size: 60px; color: black;">?</span>TION</h1>
             <form id="sign-form" method="POST" action="">
                 <div class="input-area">
                     <input id="username" class="input--text" type="text" autocomplete="off" required>
@@ -70,7 +81,7 @@
                 <div class="input-area">
                     <input id="email" class="input--text" type="email" autocomplete="off" required>
                     <label for="email">E-mail</label>
-                </div class="input-area">
+                </div>
                 <div class="input-area">
                     <input id="pw" class="input--text" type="password" autocomplete="off" required>
                     <label for="pw">Password</label>

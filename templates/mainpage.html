@@ -46,16 +46,11 @@
     <!-- https://fontawesome.com/start -->
     <script src="https://kit.fontawesome.com/f1def33959.js" crossorigin="anonymous"></script>
 
-
+    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
-
-    <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
@@ -64,7 +59,7 @@
     <!-- <script src="js/main.js"></script> -->
 
     <script defer src="/static/js/backtotop.js"></script>
-    {#    <script defer src="/static/js/display.js"></script>#}
+    <script defer src="/static/js/display.js"></script>
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
 
@@ -286,11 +281,11 @@
         <div class="Q_wrapper">
             <div class="Q_text">QUES</div>
 
-            <div class="Q_image" onclick="startToAnswer()">
+            <a href="/contents" class="Q_image" onclick="startToAnswer()">
                 <img class="logo" src="../static/image/q-logo-black.png"
                      onmouseover="this.src='../static/image/q-logo-white.png'"
                      onmouseout="this.src='../static/image/q-logo-black.png'">
-            </div>
+            </a>
 
             <div class="Q_text">TION</div>
         </div>
@@ -419,7 +414,7 @@
     </div>
 </footer>
 
-{#<!— login popup창 만들기 —>#}
+<!— login popup창 만들기 —>
 <div class="login-popup" id="pop1">
     <center>
         <div class="login-wrap">
@@ -431,7 +426,7 @@
                     <div class="outBox id-outbox">
                         <form method="" action="" class="inputBox email-inputbox">
                             <input type="text" id="email" name="email" autocomplete="off"/>
-                            <label for="email">email</label>
+                            <label for="email">EMAIL</label>
                         </form>
                     </div>
                 </div>
@@ -448,7 +443,7 @@
             <div onclick="login()" class="login-btn" type="submit">Login</div>
             <div class="other-option">
                 <div>
-                    <a href="#" class="other-option_signup">Sign up!</a>
+                    <a href="/register" class="other-option_signup">Sign up!</a>
                 </div>
                 <div>
                     <a href="#" class="other-option_forgot">Forgot ID or PW?</a>

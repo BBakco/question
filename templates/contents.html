@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <meta name="author" content="BBakco" />
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,33 +10,34 @@
         content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
 
     <!-- http://ogp.me/ -->
-    <meta property="og:type" content="">
-    <meta property="og:site_name" content="">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
+    <meta property="og:type" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
 
     <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
-    <meta property="twitter:card" content="">
-    <meta property="twitter:site" content="">
-    <meta property="twitter:title" content="">
-    <meta property="twitter:description" content="">
-    <meta property="twitter:image" content="">
-    <meta property="twitter:url" content="">
+    <meta property="twitter:card" content="" />
+    <meta property="twitter:site" content="" />
+    <meta property="twitter:title" content="" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="" />
+    <meta property="twitter:url" content="" />
 
     <title>BBakco</title>
 
     <!-- CSS reset, CSS style, Jquery import -->
-    <link rel="stylesheet" href="/static/reset.css">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/reset.css" />
+    <link rel="stylesheet" href="/static/style.css" />
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <style>
         * {
-            margin : 0;
+            margin: 0;
             padding: 0;
         }
+
         body {
             /* background-color: rgb(68,68,68); */
             background-color: white;
@@ -50,7 +51,6 @@
             margin: auto;
             overflow: hidden;
         }
-
 
         .question {
             background-color: rgb(0, 0, 0, 0);
@@ -137,6 +137,7 @@
             .qna-next-btn {
                 font-size: 1.6vh;
             }
+
             .qna-submit-btn {
                 font-size: 2.3vh;
             }
@@ -153,9 +154,9 @@
             border-image: linear-gradient(to right, rgb(255, 156, 156),rgb(255, 245, 160)); */
             border-image-slice: 1;
         }
-
     </style>
-    <style> /*헤더 스타일*/
+    <style>
+        /*헤더 스타일*/
         #nav {
             width: 100vw;
             height: 7vh;
@@ -165,19 +166,20 @@
             justify-content: flex-end;
         }
 
-        .mypagebtn, .logoutbtn {
+        .mypagebtn,
+        .logoutbtn {
             color: white;
             margin: 20px;
             padding: 30px 30px 0 0;
             text-decoration: none;
         }
- 
+
         .mypage-content {
             display: none;
             position: absolute;
             background: #ffefdf;
             min-width: 150px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -188,9 +190,17 @@
             display: block;
         }
 
-        .mypage-content a:hover {background: gray:}
-        .dropdown:hover .mypage-content {display: block;}
-        .dropdown:hover .mypagebtn {background: #ff3300}
+        .mypage-content a:hover {
+            background: gray;
+        }
+
+        .dropdown:hover .mypage-content {
+            display: block;
+        }
+
+        .dropdown:hover .mypagebtn {
+            background: #ff3300
+        }
 
         footer {
             width: 100vw;
@@ -200,48 +210,49 @@
         }
     </style>
 
-
     <script>
         //페이지 로딩시 랜덤 질문 from JSON.
         window.onload = function () {
-            getQuestions()
-        }
-
+            getQuestions();
+        };
 
         //버튼 클릭시 랜덤 질문 from JSON.
         function getQuestions() {
-            $('#station').empty();
+            $("#station").empty();
 
             $.ajax({
                 type: "GET",
                 url: "/contents/get",
                 data: {},
                 success: function (response) {
-                    let questions = response['all_questions']
-                    let i = Math.floor(Math.random() * questions.length)
-                    let question = questions[i]['question']
-                    let temp_html = `${question}`
-                    $('#station').append(temp_html);
-                }
-            })
+                    let questions = response["all_questions"];
+                    let i = Math.floor(Math.random() * questions.length);
+                    let question = questions[i]["question"];
+                    let temp_html = `${question}`;
+                    $("#station").append(temp_html);
+                },
+            });
         }
 
         //버튼 클릭시 랜덤 질문 from JSON.
         function postAnswers() {
-            let question = $('#station').text()
-            let answer = $('#A-input-id').val()
+            let question = $("#station").text();
+            let answer = $("#A-input-id").val();
             $("#A-input-id").val(""); // input 박스 초기화
 
             $.ajax({
                 type: "POST",
                 url: "/contents/post",
-                data: {question_give: question, answer_give: answer},
-                success: function (response) { // 성공하면
-                    alert(response['msg']);
-                }
-            })
+                data: {
+                    question_give: question,
+                    answer_give: answer
+                },
+                success: function (response) {
+                    // 성공하면
+                    alert(response["msg"]);
+                },
+            });
         }
-
 
         //질문 div 클릭시 높이변화(답변창 팝업) 이벤트 전파 중단
         function cancelPropagation(event) {
@@ -254,56 +265,57 @@
     </script>
 
     <script>
-     /*로그아웃 알림 로그아웃*/
+        /*로그아웃 알림 로그아웃*/
         function confirmLogout() {
             if (confirm("로그아웃 하시겠습니까?")) {
-                location.href = "<c:url value ='/member/logout'/>";
+                location.href = "<c:url value ='/home'/>";
             }
         }
-
     </script>
-
 </head>
 
 <body>
     <header>
         <div id="nav">
             <div class="dropdown">
-                <a class="mypagebtn">My page</a>
-                <div class="mypage-content">
-                    <a class="" href="#">다른사람 답변보기</a>
+                <a class="mypagebtn" href="/home">Home</a>
+                <a class="mypagebtn" href="/mypage">My page</a>
+                <!-- <div class="mypage-content">
                     <a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
                     <a class="deletebtn" type="button" href="">탈퇴하기</a>
-                </div>
+                </div> -->
             </div>
             <div id="logbtn">
-              <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
+                <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
             </div>
         </div>
-    </header>	
+    </header>
 
     <div class="wrap">
         <div class="question fade-in overlay" onClick="
-        if(this.style.height === '93vh') { 
+        if(this.style.height === '93vh') {
             this.style.height = '60vh';
         }
         else {
             this.style.height = '93vh';
         }
         ">
-            <span style='font-size: 5vh;'>Q.</span>
-            <div id= 'station'></div>
-            <span class=example onclick=cancelPropagation(event);>
-                <button class="qna-next-btn" onclick=getQuestions()>다른 질문을 원하신다면 ></button>
+            <span style="font-size: 5vh">Q.</span>
+            <div id="station"></div>
+            <span class="example" onclick="cancelPropagation(event);">
+                <button class="qna-next-btn" onclick="getQuestions()">
+                    다른 질문을 원하신다면 >
+                </button>
             </span>
-
         </div>
         <div class="A-out-box">
-            <span style='font-size: 5vh;'>A.</span>
+            <span style="font-size: 5vh">A.</span>
             <div class="A-input-box">
-                <input class="A-input-class" id="A-input-id" type="text" placeholder="답변을 입력해주세요.">
+                <input class="A-input-class" id="A-input-id" type="text" placeholder="답변을 입력해주세요." />
             </div>
-            <button onclick="postAnswers()" class="qna-submit-btn">저장하기 ></button>
+            <button onclick="postAnswers()" class="qna-submit-btn">
+                저장하기 >
+            </button>
         </div>
     </div>
 

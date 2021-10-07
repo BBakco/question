@@ -97,8 +97,7 @@ a {
     background-color: rgb(255, 255, 255);
     border: none;
     box-shadow: 0 0 10px rgba(0,0,0,0.6);
-    padding: 20px;
-    position: fixed;
+    padding: 50px;
     z-index: 999;
     display: flex;
     visibility: hidden;
@@ -112,6 +111,10 @@ a {
     -moz-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+}
+
+.login-btn{
+    margin-top: 20px;
 }
 
 .login-popup a {
@@ -140,7 +143,7 @@ a {
 
 /* inputbox에 대한 효과 */
 .outBox {
-    /* margin:15px auto;  */
+    /* margin:15px auto;*/
     padding:0px; 
     max-width:400px; 
     border:none; 
