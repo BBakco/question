@@ -65,30 +65,26 @@ def register_info():
     db.bbackco.insert_one(doc)
     return jsonify({'msg': '회원가입 완료!'})
 
-
-@app.route('/login/post', methods=['GET', 'POST'])
+# 로그인 이용자 확인 처리 
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == "POST":
-        email_receive = request.form['email_give']
-        pw_receive = request.form['pw_give']
-        session["user"] = user
-
-    users = list(db.bbackco.findOne({}, {'_id': False}))
-
-    if "@" and "." not in email_receive:
-        return jsonify({"msg": "이메일을 확인해주세요"})
-    elif not (email_receive and pw_receive):
-        return jsonify({'msg': '패스워드를 입력해주세요'})
+    if request.method == 'GET':
+        return render_template('login.html')
     else:
-        for user in users:
-            if email_receive in user['email'] and pw_receive in user['pw']:
-                if "user" in session:
-                   return jsonify({'msg': '환영합니다'})
-            else:
-                return jsonify({'msg': '입력값을 확인해주세요'})
+        id = request.form['id']
+        pw = request.form['pw']
+        # id와 pw 검사
+        if "@" and "." not in email_receive:
+            email_receive = request.form['email_give']
+            pw_receive = request.form['pw_give']
+            session['user'] = id
+            return redirect(url_for('login'))
+        else:
+            return "아이디 또는 패스워드를 확인 하세요."
                 
 @app.route("/logout")
 def logout():
+    session.pop('user', None)
     return jsonify({'msg': '로그아웃 하시겠습니까?'})
 
 if __name__ == '__main__':
