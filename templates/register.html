@@ -31,6 +31,13 @@
     <link rel="stylesheet" href="/static/signupstyle.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+    <!-- 일반적인 fabicon 설정 (정현) -->
+    <link rel="icon" href="../static/image/fabicon.ico">
+    <!-- 아이폰용 fabicon 설정 (정현) -->
+    <link rel="apple-touch-icon" href="../static/image/fabicon.ico">
+    <!-- 인터넷 익스플로러용 fabicon 설정 -->
+    <link rel="short icon" type="image/x-icon" href="../static/image/fabicon.ico">
+
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,7 +64,7 @@
                 },
                 success: function (response) {
                     alert(response["msg"]);
-                    window.location.replace('/home');
+                    window.location.replace('/');
 
                     {#console.log(data)#}
                 }

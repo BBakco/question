@@ -142,56 +142,60 @@ a {
 }
 
 /* inputbox에 대한 효과 */
+.login-container_input_id img {
+    display: inline-block;
+}
+
 .outBox {
     /* margin:15px auto;*/
-    padding:0px; 
-    max-width:400px; 
-    border:none; 
+    padding:0px;
+    max-width:400px;
+    border:none;
     border-radius:6px;
     display: inline-block;
 }
 
 .outBox .inputBox {
-    position:relative; 
+    position:relative;
     height:50px;
     margin-top: 10px;
     display: inline-block;
 }
 
 .outBox .inputBox input[type="text"] {
-    padding:0 10px; 
-    width:100%; 
-    height:40px; 
-    font-size:14px; 
-    box-sizing:border-box; 
-    border:1px solid #999; 
+    padding:0 10px;
+    width:100%;
+    height:40px;
+    font-size:14px;
+    box-sizing:border-box;
+    border:1px solid #999;
     outline:none;
     display: inline-block;
 }
 
 .outBox .inputBox input[type="password"] {
-    padding:0 10px; 
-    width:100%; 
-    height:40px; 
-    font-size:14px; 
-    box-sizing:border-box; 
-    border:1px solid #999; 
+    padding:0 10px;
+    width:100%;
+    height:40px;
+    font-size:14px;
+    box-sizing:border-box;
+    border:1px solid #999;
     outline:none;
     display: inline-block;
 }
 
 .outBox .inputBox label {
-    position:absolute; 
-    left:0; 
-    bottom:0; 
-    padding:0 6px; 
-    color:#999; 
-    font-size:14px; 
-    font-weight:normal; 
-    background:#fff; 
-    transform:scale(1) 
-    translate(4px, -18px); 
-    transition:all .15s; 
+    position:absolute;
+    left:0;
+    bottom:0;
+    padding:0 6px;
+    color:#999;
+    font-size:14px;
+    font-weight:normal;
+    background:#fff;
+    transform:scale(1)
+    translate(4px, -18px);
+    transition:all .15s;
     pointer-events:none;}
 
 .outBox .inputBox input[type="text"]:focus,
@@ -200,7 +204,7 @@ a {
 
 .outBox .inputBox input[type="text"]:focus + label,
 .outBox.existence .inputBox label {
-    color:#ff3300; 
+    color:#ff3300;
     transform:scale(.85) translate(-10px, -48px);}
 
 .outBox .inputBox input[type="password"]:focus,
@@ -224,17 +228,10 @@ a {
     margin: 0 auto;
 }
 
-.login-wrap2 {
-    position: relative;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-}
 
 .login-container_input {
   display: block;
-  position: absolute;
+  position: relative;
   align-items: center;
 
 }
@@ -242,7 +239,7 @@ a {
 .login-container_input_id {
     line-height: 100%;
     align-items: center;
-    display: inline;
+    display: inline-block;
 }
 
 .login-container_input_id img {
@@ -256,25 +253,30 @@ a {
     width: 30px;
     transform: translateY(10px);
     margin-right: 5px;
-    display: inline;
+    display: inline-block;
 }
 
 .login-btn {
     width: 90%;
     height: 40px;
     background: #ff3300;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 8px;
-    margin-top: 150px;
     color: white;
     font-size: 20px;
     text-align: center;
     line-height: 40px;
+    position: relative;
 }
 
 .login-btn:hover {
     cursor: pointer;
     box-shadow: 0 0 0 100px rgba(0,0,0,0.15) inset;
+}
+
+.other-option {
+    margin-top: 30px;
+    position: relative;
 }
 
 .login-other-options-container {

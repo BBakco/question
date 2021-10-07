@@ -94,12 +94,32 @@
         }
     </script>
 
+{#    <script>#}
+{#        function login() {#}
+{#            let email = $('#email').val()#}
+{#            let password = $('#pw').val()#}
+{##}
+{#            $.ajax({#}
+{#                type: "POST",#}
+{#                url: "/#pop1",#}
+{#                data: {#}
+{#                    email_give: email,#}
+{#                    pw_give: password#}
+{#                },#}
+{#                success: function (response) {#}
+{#                    alert(response["msg"]);#}
+{#                    window.location.replace('/');#}
+{#                }#}
+{#            });#}
+{#        }#}
+{#    </script>#}
+
 
     <script>
         window.onload = function () {
             $.ajax({
                 type: "GET",
-                url: "/home/get",
+                url: "/get",
                 data: {},
                 success: function (response) {
                     let questions = response['home_q']
@@ -330,34 +350,34 @@
         <p class="member_title">Our Team Members</p>
         <div class="member">
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/ls.png" alt="member"
                      class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><span style="font-weight: bold;">이성</span></p>
+                <p style="text-align: center"><br>rdmshine@gmail.com</p>
             </div>
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/pk.png" alt="member"
                      class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><span style="font-weight: bold;">박결</span></p>
+                <p style="text-align: center"><br>gyor@naver.com</p>
             </div>
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/mj.png" alt="member"
                      class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><span style="font-weight: bold;">서민정</span></p>
+                <p style="text-align: center"><br>pig5000kg@naver.com</p>
             </div>
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/ys.png" alt="member"
                      class="member_img">
                 <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><br>ttjsl0101@gmail.com</p>
             </div>
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/jh.png" alt="member"
                      class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><span style="font-weight: bold;">김정현</span></p>
+                <p style="text-align: center"><br>skjh0807s@naver.com</p>
             </div>
         </div>
         <p class="member_title">Special Thanks To</p>
@@ -365,20 +385,20 @@
             <div class="member_card">
                 <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
                      class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><span style="font-weight: bold;">황선애 매니저</span></p>
+                <p style="text-align: center"></p>
+            </div>
+            <div class="member_card">
+                <img src="/static/image/yr.png" alt="member"
+                     class="member_img">
+                <p style="text-align: center"><span style="font-weight: bold;">왕예리 매니저</span></p>
+                <p style="text-align: center"></p>
             </div>
             <div class="member_card">
                 <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
                      class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
-            </div>
-            <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
-                     class="member_img">
-                <p style="text-align: center"><span style="font-weight: bold;">김영선</span></p>
-                <p style="text-align: center"><br>프론트엔드, 백엔드 개발</p>
+                <p style="text-align: center"><span style="font-weight: bold;">양봉현 튜터</span></p>
+                <p style="text-align: center"></p>
             </div>
         </div>
     </div>
@@ -410,7 +430,7 @@
     <div class="footer">
         <p> "?"(QUESTION) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코 </p>
         <p> copyrightⓒ2021 빡코 All rights reserved </p>
-        <img class=collaboration src="/static/image/collaboration.png">
+        <a href="https://spartacodingclub.kr/"><img class=collaboration src="/static/image/collaboration.png"></a>
     </div>
 </footer>
 

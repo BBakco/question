@@ -32,10 +32,28 @@
     <link rel="stylesheet" href="/static/style.css" />
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+    <!-- 일반적인 fabicon 설정 (정현) -->
+    <link rel="icon" href="../static/image/fabicon.ico">
+    <!-- 아이폰용 fabicon 설정 (정현) -->
+    <link rel="apple-touch-icon" href="../static/image/fabicon.ico">
+    <!-- 인터넷 익스플로러용 fabicon 설정 -->
+    <link rel="short icon" type="image/x-icon" href="../static/image/fabicon.ico">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+
+
     <style>
         * {
             margin: 0;
             padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
         body {
@@ -53,7 +71,7 @@
         }
 
         .question {
-            background-color: rgb(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0);
             height: 93vh;
             width: 60vw;
             display: table-cell;
@@ -86,13 +104,13 @@
             border-left: none;
             border-right: none;
             border-bottom: 0.55vh solid black;
-            background-color: rgb(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0);
             outline: none;
             margin-bottom: 3vh;
         }
 
         .qna-next-btn {
-            background-color: rgb(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0);
             border: none;
             color: lightgrey;
             font-size: 1.8vh;
@@ -106,7 +124,7 @@
         }
 
         .qna-submit-btn {
-            background-color: rgb(0, 0, 0, 0);
+            background-color: rgba(0, 0, 0, 0);
             border: none;
             color: black;
             font-size: 2.5vh;
@@ -170,32 +188,22 @@
         .logoutbtn {
             color: white;
             margin: 20px;
+            font-size: 20px;
             padding: 30px 30px 0 0;
             text-decoration: none;
+            font-family: 'Cormorant Garamond', serif;
         }
 
-        .mypage-content {
-            display: none;
-            position: absolute;
-            background: #ffefdf;
-            min-width: 150px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
+        .mypagebtn:hover {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .mypage-content a {
-            color: #ff3300;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
+        .logoutbtn:hover {
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .mypage-content a:hover {
-            background: gray;
-        }
-
-        .dropdown:hover .mypage-content {
-            display: block;
+        .dropdown {
+            margin-right: 13px;
         }
 
         .dropdown:hover .mypagebtn {
@@ -268,7 +276,7 @@
         /*로그아웃 알림 로그아웃*/
         function confirmLogout() {
             if (confirm("로그아웃 하시겠습니까?")) {
-                location.href = "<c:url value ='/home'/>";
+                location.href = '/'
             }
         }
     </script>
@@ -278,15 +286,11 @@
     <header>
         <div id="nav">
             <div class="dropdown">
-                <a class="mypagebtn" href="/home">Home</a>
+                <a class="mypagebtn" href="/"><br>Home</a>
                 <a class="mypagebtn" href="/mypage">My page</a>
-                <!-- <div class="mypage-content">
-                    <a class="changebtn" type="button" href="" onclick="">회원정보 변경</a>
-                    <a class="deletebtn" type="button" href="">탈퇴하기</a>
-                </div> -->
             </div>
             <div id="logbtn">
-                <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();">logout</a>
+                <a class="logoutbtn" type="button" href="javascript:void(0);" onclick="confirmLogout();"><br>Logout</a>
             </div>
         </div>
     </header>
@@ -301,7 +305,7 @@
         }
         ">
             <span style="font-size: 5vh">Q.</span>
-            <div id="station"></div>
+            <div id="station" style="font-family: 'Noto Sans KR', sans-serif; font-weight: bold"></div>
             <span class="example" onclick="cancelPropagation(event);">
                 <button class="qna-next-btn" onclick="getQuestions()">
                     다른 질문을 원하신다면 >
