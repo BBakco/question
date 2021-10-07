@@ -64,7 +64,7 @@
     <!-- <script src="js/main.js"></script> -->
 
     <script defer src="/static/js/backtotop.js"></script>
-{#    <script defer src="/static/js/display.js"></script>#}
+    {#    <script defer src="/static/js/display.js"></script>#}
     <script defer src="/static/js/popup.js"></script>
     <script defer src="/static/js/footericon.js"></script>
 
@@ -80,6 +80,27 @@
     </script>
 
     <script>
+        function login() {
+            let email = $('#email').val()
+            let password = $('#pw').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/login/post",
+                data: {
+                    email_give: email,
+                    pw_give: password
+                },
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.replace('/');
+                }
+            });
+        }
+    </script>
+
+
+    <script>
         window.onload = function () {
             $.ajax({
                 type: "GET",
@@ -89,21 +110,21 @@
                     let questions = response['home_q']
                     let answers = response['home_a']
 
-                    let question_0 = questions[questions.length-1]['question']
-                    let question_1 = questions[questions.length-2]['question']
-                    let question_2 = questions[questions.length-3]['question']
-                    let question_3 = questions[questions.length-4]['question']
-                    let question_4 = questions[questions.length-5]['question']
-                    let question_5 = questions[questions.length-6]['question']
-                    let question_6 = questions[questions.length-7]['question']
+                    let question_0 = questions[questions.length - 1]['question']
+                    let question_1 = questions[questions.length - 2]['question']
+                    let question_2 = questions[questions.length - 3]['question']
+                    let question_3 = questions[questions.length - 4]['question']
+                    let question_4 = questions[questions.length - 5]['question']
+                    let question_5 = questions[questions.length - 6]['question']
+                    let question_6 = questions[questions.length - 7]['question']
 
-                    let answer_0 = answers[answers.length-1]['answer']
-                    let answer_1 = answers[answers.length-2]['answer']
-                    let answer_2 = answers[answers.length-3]['answer']
-                    let answer_3 = answers[answers.length-4]['answer']
-                    let answer_4 = answers[answers.length-5]['answer']
-                    let answer_5 = answers[answers.length-6]['answer']
-                    let answer_6 = answers[answers.length-7]['answer']
+                    let answer_0 = answers[answers.length - 1]['answer']
+                    let answer_1 = answers[answers.length - 2]['answer']
+                    let answer_2 = answers[answers.length - 3]['answer']
+                    let answer_3 = answers[answers.length - 4]['answer']
+                    let answer_4 = answers[answers.length - 5]['answer']
+                    let answer_5 = answers[answers.length - 6]['answer']
+                    let answer_6 = answers[answers.length - 7]['answer']
 
                     let temp_html = `<li class=qna-showcard qna-showcard-1">
                                             <div class="show-question-container">
@@ -298,90 +319,7 @@
                 다른 사람들은 지금 어떤 생각을 하고 있을까요?
             </div>
             <ul id="qna-showlist" class="qna-showlist" data-position="0">
-                <!--<li class="qna-showcard qna-showcard-1">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q1<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>
-                <li class="qna-showcard qna-showcard-2">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q2<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>
-                <li class="qna-showcard qna-showcard-3">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q3<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>
-                <li class="qna-showcard qna-showcard-4">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q4<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>
-                <li class="qna-showcard qna-showcard-5">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q5<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>
-                <li class="qna-showcard qna-showcard-6">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q6<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>
-                <li class="qna-showcard qna-showcard-7">
-                    <div class="show-question-container">
-                        <div class="show-question-text">Q7<br>질문입니다.</div>
-                    </div>
-                    <div class="show-answer-container">
-                        <div class="show-answer-text">
-                            db에서 가져오기 고장이 난 시계 속의 스물네 시간을 되찾자 번져 있는 잉크 위에 아침 햇살을 담아 건져 올릴 하루를 담담히 써 내려가 보자 의미를 알지 못한
-                            하루 속에 음미를 하지 못한 시간 탓에 온기를 담지 못한 순간들에게 사과해야지 이젠 다가가야지 묻혀 있는 시간 위에 노래를 부르자 던져 버린 스물네(공백포함
-                            200 공백제외 145)
-                        </div>
-                    </div>
-                </li>-->
+
             </ul>
 
         </div>
@@ -481,12 +419,12 @@
     </div>
 </footer>
 
-<!-- login popup창 만들기 -->
+{#<!— login popup창 만들기 —>#}
 <div class="login-popup" id="pop1">
     <center>
         <div class="login-wrap">
             <div class="login-title">QUES<span>?</span>TION</div>
-            <!-- <div class="login-wrap2"> -->
+
             <div class="login-container_input">
                 <div class="login-container_input_id">
                     <img src="../static/image/id.png">
@@ -517,13 +455,10 @@
                 </div>
             </div>
 
-            <!-- </div> -->
+
         </div>
     </center>
-
-
     <a href="#" id="exit-loginbox">x</a>
-
 </div>
 
 

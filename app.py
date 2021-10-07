@@ -13,9 +13,9 @@ def home():
     return render_template('mainpage.html')
 
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 
 @app.route('/mypage')
@@ -73,6 +73,57 @@ def read_answers():
     answers = list(db.mypage_sample.find({'id':'id1'}, {'_id': False}))
     return jsonify({'all_answers': answers})
 
+# 로그인
+@app.route('/login/post', methods=['GET', 'POST'])
+def login():
+    email_receive = request.form['email_give']
+    pw_receive = request.form['pw_give']
+
+    users = list(db.register.find({}, {'_id': False, 'email': 1, 'pw': 1}))
+
+    emailli = []
+    pwli = []
+    for user in users:
+        emailli.append(user['email'])
+        pwli.append(user['pw'])
+
+    if "@" and "." not in email_receive:
+        return jsonify({"msg": "이메일을 확인해주세요"})
+    elif not (email_receive and pw_receive):
+        return jsonify({'msg': '패스워드를 입력해주세요'})
+    else:
+        # for user in users:
+        if email_receive in emailli and pw_receive in pwli:
+            return jsonify({'msg': '환영합니다'})
+        else:
+            return jsonify({'msg': '입력값을 확인하세요'})
+
+# register
+@app.route('/register', methods=['POST'])
+def register_info():
+    username_receive = request.form['username_give']
+    email_receive = request.form['email_give']
+    pw_receive = request.form['pw_give']
+    repeatpw_receive = request.form['repeatpw_give']
+
+    if "@" not in email_receive:
+        return jsonify({'msg': '이메일을 입력해주세요.'})
+
+    elif '.' not in email_receive:
+        return jsonify({'msg': '이메일을 완성해주세요'})
+
+    elif not (email_receive and pw_receive and repeatpw_receive):
+        return jsonify({'msg': '모두 입력해주세요'})
+
+    doc = {
+        'username': username_receive,
+        'email': email_receive,
+        'pw': pw_receive,
+        'repeatpw': repeatpw_receive
+    }
+
+    db.register.insert_one(doc)
+    return jsonify({'msg': '회원가입 완료!'})
 
 
 if __name__ == '__main__':

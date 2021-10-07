@@ -2,7 +2,6 @@
 <html lang="ko">
 
 <head>
-    <meta charset="utf-8">
     <meta name="author" content="BBakco" />
     <meta name="description" content="" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,13 +30,39 @@
     <link rel="stylesheet" href="/static/reset.css">
     <link rel="stylesheet" href="/static/signupstyle.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+    <script>
+        function register() {
+            let username = $('#username').val()
+            let email = $('#email').val()
+            let pw = $('#pw').val()
+            let repeatpw = $('#repeatpw').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/register",
+                data: {
+                    username_give: username,
+                    email_give: email,
+                    pw_give: pw,
+                    repeatpw_give: repeatpw
+                },
+                success: function (response) {
+                    alert(response["msg"]);
+                    window.location.replace('/');
+                }
+            })
+        }
+    </script>
+
 </head>
 
 <body>
     <div class="body__container">
         <section class="inner">
             <h1>LOGO DESIGN</h1>
-            <form id="sign-form" method="POST" action=".">
+            <form id="sign-form" method="POST" action="">
                 <div class="input-area">
                     <input id="username" class="input--text" type="text" autocomplete="off" required>
                     <label for="username">User Name</label>
@@ -51,52 +76,16 @@
                     <label for="pw">Password</label>
                 </div>
                 <div class="input-area">
-                    <input id="re-pw" class="input--text" type="password" autocomplete="off" required>
-                    <label for="re-pw">Repeat Password</label>
+                    <input id="repeatpw" class="input--text" type="password" autocomplete="off" required>
+                    <label for="repeatpw">Repeat Password</label>
                 </div>
                 <div class="btn-area">
-                    <button class="btn" type="submit">Sign up</button>
+                    <button onclick="register()" class="btn" type="submit">Sign up</button>
                 </div>
             </form>
         </section>
     </div>
-    <script>
 
-    function Login_msg() {
-        let user_email = $('#email-box').val()
-        let user_password = $('#password-box').val()
-
-        $.ajax({
-            type: "POST",
-            url: "/login",
-            data: {user_email_give: user_email, user_pass_give: user_password},
-            success: function (response) {
-                alert(response['msg'])
-                window.location.reload()
-            }
-        })
-    }
-
-    function join_us() {
-        let email = $('#email-box').val()
-        let password = $('#password-box').val()
-
-        $.ajax({
-            type: "POST",
-            url: "/joinus",
-            data: {email_give: email, pass_give: password},
-            success: function (response) {
-                if (email.includes('@'))
-                alert(response["msg"]);
-                else {
-                    alert(response["msg"])
-                }
-                window.location.reload();
-            }
-        })
-    }
-
-</script>
 
 </body>
 
