@@ -73,7 +73,7 @@ def login():
     else:
         id = request.form['id']
         pw = request.form['pw']
-        # id와 pw 검사
+        
         if "@" and "." not in email_receive:
             email_receive = request.form['email_give']
             pw_receive = request.form['pw_give']
