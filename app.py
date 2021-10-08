@@ -1,20 +1,17 @@
-from flask import Flask, render_template, request, jsonify #, redirect, url_for, session
+from flask import Flask, render_template, request, jsonify #, session
 from pymongo import MongoClient
-from datetime import datetime #, timedelta
+from datetime import datetime
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
 db = client.dbbbackco
 
 app = Flask(__name__)
-# app.secret_key = "BBackco@question!"
-# app.permanent_session_lifetime = timedelta(days=1)
 
 
 # HTML 화면 보여주기
 @app.route('/')
 def home():
-    # if 'username' in session:
-    #     username = session['username']
     return render_template('mainpage.html')
 
 @app.route('/register')
@@ -70,13 +67,14 @@ def contents_post():
     }
     db.contents.insert_one(doc)
 
-    return jsonify({'msg': '저장되었습니다.'})
+    return jsonify({'msg': '답변이 저장되었습니다.'})
 
 
 # mypage
 @app.route('/mypage/get', methods=['GET'])
 def read_answers():
-    answers = list(db.mypage_sample.find({'id': 'id1'}, {'_id': False}))
+    answers = list(db.contents.find({}, {'_id': False}))
+    # answers = list(db.mypage_sample.find({'id': 'id1'}, {'_id': False}))
     return jsonify({'all_answers': answers})
 
 
@@ -105,48 +103,6 @@ def login():
         else:
             return jsonify({'msg': '입력값을 확인하세요'})
 
-
-# # 로그인 이용자 확인 처리
-# @app.route('/home#pop1', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'GET':
-#         return render_template('mainpage.html')
-#     else:
-#         id = request.form['id']
-#         pw = request.form['pw']
-#         # id와 pw 검사
-#         if "@" and "." not in email_receive:
-#             email_receive = request.form['email_give']
-#             pw_receive = request.form['pw_give']
-#             session['user'] = id
-#             return redirect(url_for('login'))
-#         else:
-#             session['logFlag'] = True
-#             session['username'] = username
-#             return render_template('session_view.html')
-#     else:
-#     return jsonify({"msg": '아이디 또는 패스워드를 확인 하세요.'})
-#
-#
-# # Login Sever
-# @app.route('/home#pop1', methods=['POST'])
-# def sign_in():
-#     email_receive = request.form['email_give']
-#     pw_receive = request.form['pw_give']
-#
-#     result = db.register.find_one({'username': email_receive, 'password': pw_receive})
-#     if result is not None:
-#         payload = {'id': email_receive, 'exp': datetime.utcnow() + timedelta(seconds=60 * 60 * 24)}
-#         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf-8')
-#         return jsonify({'result': 'success', 'token': token})
-#     # 찾지 못하면
-#     else: return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
-#
-#
-# @app.route("/logout")
-# def logout():
-#     session.pop('user', None)
-#     return jsonify({'msg': '로그아웃 하시겠습니까?'})
 
 
 # register

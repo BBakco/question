@@ -12,13 +12,17 @@
     <!-- 이 아래 태그 추가함(정현). 화면 렌더링할 때 최신의 인터넷 엔진을 쓰라는 뜻의 ?-->
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
 
-    <!-- http://ogp.me/ -->
-    <meta property="og:type" content="">
-    <meta property="og:site_name" content="">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
-    <meta property="og:url" content="">
+    <meta property="og:title" content="QnAnswers"/>
+    <meta property="og:description" content="당신이 대답하고 싶은 모든 질문들"/>
+    <meta property="og:image" content="/static/image/ogimage.png"/>
+
+{#    <!-- http://ogp.me/ -->#}
+{#    <meta property="og:type" content="website">#}
+{#    <meta property="og:site_name" content="QnAnswers">#}
+{#    <meta property="og:title" content="QnAnswers">#}
+{#    <meta property="og:description" content="당신이 하고 싶은 모든 질문들">#}
+{#    <meta property="og:image" content="/static/image/ogimage.png">#}
+{#    <meta property="og:url" content="qnanswers.shop">#}
 
     <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
     <meta property="twitter:card" content="">
@@ -28,7 +32,7 @@
     <meta property="twitter:image" content="">
     <meta property="twitter:url" content="">
 
-    <title>BBakco</title>
+    <title>QnAnswers</title>
 
     <!-- CSS reset, CSS style, Jquery import -->
     <link rel="stylesheet" href="/static/reset.css">
@@ -94,27 +98,6 @@
         }
     </script>
 
-{#    <script>#}
-{#        function login() {#}
-{#            let email = $('#email').val()#}
-{#            let password = $('#pw').val()#}
-{##}
-{#            $.ajax({#}
-{#                type: "POST",#}
-{#                url: "/#pop1",#}
-{#                data: {#}
-{#                    email_give: email,#}
-{#                    pw_give: password#}
-{#                },#}
-{#                success: function (response) {#}
-{#                    alert(response["msg"]);#}
-{#                    window.location.replace('/');#}
-{#                }#}
-{#            });#}
-{#        }#}
-{#    </script>#}
-
-
     <script>
         window.onload = function () {
             $.ajax({
@@ -125,21 +108,21 @@
                     let questions = response['home_q']
                     let answers = response['home_a']
 
-                    let question_0 = questions[questions.length - 1]['question']
-                    let question_1 = questions[questions.length - 2]['question']
-                    let question_2 = questions[questions.length - 3]['question']
-                    let question_3 = questions[questions.length - 4]['question']
-                    let question_4 = questions[questions.length - 5]['question']
-                    let question_5 = questions[questions.length - 6]['question']
-                    let question_6 = questions[questions.length - 7]['question']
+                    let question_0 = questions[questions.length - 3]['question']
+                    let question_1 = questions[questions.length - 5]['question']
+                    let question_2 = questions[questions.length - 8]['question']
+                    let question_3 = questions[questions.length - 10]['question']
+                    let question_4 = questions[questions.length - 13]['question']
+                    let question_5 = questions[questions.length - 17]['question']
+                    let question_6 = questions[questions.length - 19]['question']
 
-                    let answer_0 = answers[answers.length - 1]['answer']
-                    let answer_1 = answers[answers.length - 2]['answer']
-                    let answer_2 = answers[answers.length - 3]['answer']
-                    let answer_3 = answers[answers.length - 4]['answer']
-                    let answer_4 = answers[answers.length - 5]['answer']
-                    let answer_5 = answers[answers.length - 6]['answer']
-                    let answer_6 = answers[answers.length - 7]['answer']
+                    let answer_0 = answers[answers.length - 3]['answer']
+                    let answer_1 = answers[answers.length - 5]['answer']
+                    let answer_2 = answers[answers.length - 8]['answer']
+                    let answer_3 = answers[answers.length - 10]['answer']
+                    let answer_4 = answers[answers.length - 13]['answer']
+                    let answer_5 = answers[answers.length - 17]['answer']
+                    let answer_6 = answers[answers.length - 19]['answer']
 
                     let temp_html = `<li class=qna-showcard qna-showcard-1">
                                             <div class="show-question-container">
@@ -383,7 +366,7 @@
         <p class="member_title">Special Thanks To</p>
         <div class="member">
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/hs.png" alt="member"
                      class="member_img">
                 <p style="text-align: center"><span style="font-weight: bold;">황선애 매니저</span></p>
                 <p style="text-align: center"></p>
@@ -395,7 +378,7 @@
                 <p style="text-align: center"></p>
             </div>
             <div class="member_card">
-                <img src="https://img.animalplanet.co.kr/news/2019/06/26/700/6l5n405756f5r183zt0f.jpg" alt="member"
+                <img src="/static/image/bh.png" alt="member"
                      class="member_img">
                 <p style="text-align: center"><span style="font-weight: bold;">양봉현 튜터</span></p>
                 <p style="text-align: center"></p>
@@ -428,7 +411,7 @@
         <div class="footer-icon_title">SHARE US</div>
     </div>
     <div class="footer">
-        <p> "?"(QUESTION) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코 </p>
+        <p> "?"(QnAnswers) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코 </p>
         <p> copyrightⓒ2021 빡코 All rights reserved </p>
         <a href="https://spartacodingclub.kr/"><img class=collaboration src="/static/image/collaboration.png"></a>
     </div>

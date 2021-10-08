@@ -18,13 +18,27 @@ q_packages_html = q_packages.findAll("a")
 translator = Translator()
 
 # pymongo
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
 db = client.dbbbackco
 
 for q_html in q_packages_html:
     # selenium
     # 서브페이지의 href와 앞의 주소를 붙여 각 서브페이지 링크 연결
-    driver = webdriver.Chrome('chromedriver')  # 웹드라이버 파일의 경로
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument("--single-process")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    path = '/home/ubuntu/sparta/chromedriver'
+    driver = webdriver.Chrome(path, chrome_options=chrome_options)
+
+    # driver = webdriver.Chrome('/home/ubuntu/sparta/chromedriver')
+    # driver = webdriver.Chrome('/home/ubuntu/sparta/')  # 웹드라이버 파일의 경로
+    # driver = webdriver.Chrome(executable_path="sftp: // ubuntu @ 3.36.75.191 / home / ubuntu / sparta / chromedriver")
+    # driver = webdriver.Chrome(ChromeDriverManager().install())
+
+
     driver.get("http://iteslj.org/questions/" + q_html['href'])
 
     # BeautifulSoup
