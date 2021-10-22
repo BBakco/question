@@ -1,10 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QnAnswers</title>
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+     <!-- Font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link
+       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+       rel="stylesheet"
+     />
+
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+     <link
+       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap"
+       rel="stylesheet"
+     />
+
+    <script
+      src="https://kit.fontawesome.com/f1def33959.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="/static/js/backtotop.js"></script>
+
+    <!-- 일반적인 fabicon 설정 (정현) -->
+    <link rel="icon" href="../static/image/fabicon.ico" />
+    <!-- 아이폰용 fabicon 설정 (정현) -->
+    <link rel="apple-touch-icon" href="../static/image/fabicon.ico" />
+    <!-- 인터넷 익스플로러용 fabicon 설정 -->
+    <link
+      rel="short icon"
+      type="image/x-icon"
+      href="../static/image/fabicon.ico"
+    />
+
+    <style>
+      * {
+        font-family: "Noto Sans KR", sans-serif;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .keyword-inputbox input {
+        border-radius:4px;
+        box-shadow: none;
+        font-size:1.2em;
+        -webkit-appearance:none;
+        -moz-appearance: none;
+        -o-appearance:none;
+        appearance: none;
+        border: rgba(0, 0, 0, 0.623) 3px solid;
+      }
+
+      .keyword-inputbox input:focus {
+        border: #ff3300 2px solid;
+        outline: 2px solid #ff3300;
+      }
+
+      .header {
+        width: 100%;
+        height: 55px;
+        background-color: #ff3300;
+        padding: 0.3rem;
+      }
+
+      .header .header_menu {
+        text-align: right;
+      }
+
+      .header .header_menu a {
+        text-decoration: none;
+        color: #ffffff;
+        padding: 10px 40px 6px 10px;
+        display: inline-block;
+        transition: color 0.3s ease;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+
+      .header .header_menu a:hover {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .logo-box {
+        margin-top: 22px;
+        margin-bottom: 18px;
+        font-size: 47px;
+        color: gray;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .logo-box span {
+        font-size: 70px;
+        color:black;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .range-text,
+      .keyword-text {
+        color: #ff3300;
+        font-weight: 700;
+      }
+
+        /* [라디오 버튼 커스텀 스타일 변경 실시] */
+      input[type='radio'] {
+        -webkit-appearance:none;
+        width:17px;
+        height:17px;
+        /* [라디오 버튼 테두리 색상 정의] */
+        border:1px solid darkgray;
+        border-radius:50%;
+        outline:none;
+        /* [라디오 버튼 배경 색상 정의] */
+        background:#ffffff;
+      }
+      input[type='radio']:before {
+        /* [content null 설정해서 커스텀 지정] */
+        content:'';
+        display:block;
+        width:70%;
+        height:70%;
+        margin: 15% auto;
+        border-radius:50%;
+      }
+
+      input[type='radio']:checked:before {
+        /* [라디오 버튼이 클릭 되었을 경우 내부 원형 색상] */
+        background:#ff3300;
+      }
+
+      .search-btn {
+        width: 70px;
+        height: 40px;
+        border: none;
+        border-radius: 6px;
+        background-color: rgb(177, 177, 177);
+        color: #ffffff;
+      }
+
+      .search-btn:hover {
+        background-color: #ff3300;
+      }
+
+      .results-list {
+        margin: 0 auto;
+        width: 80%;
+        border: 2px;
+        display: flex;
+      }
+
+      .result-showcard {
+        width: 320px;
+        height: 270px;
+        background-color: rgb(216, 216, 216);
+        box-shadow: 10px 10px 10px -5px rgba(25, 42, 70, 0.3);
+        border-radius: 8px;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: inline-block;
+        margin-top: 20px;
+        margin-right: 40px;
+        position: relative;
+      }
+
+      .result-showcard:hover {
+        background-color: rgb(238, 238, 238);
+        box-shadow: 10px 10px 10px 0px rgba(25, 42, 70, 0.2);
+        transform: translate(0, -5px);
+        transition-duration: 0.6s;
+      }
+
+      .result-question-container {
+        margin: 50px 20px 25px 20px;
+      }
+
+      .result-question-text {
+        font-weight: 800;
+      }
+
+      .result-answer-container {
+        margin: 25px 20px 25px 20px;
+      }
+
+      .likes-num {
+        font-size: 10px;
+        color: white
+      }
+
+      .like-btn {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+      }
+
+      .like-btn_image {
+        width: 30px;
+        display: block;
+      }
+
+      .article-id-hidden {
+        opacity: 0;
+      }
+
+      #backtotop {
+        background-color: rgb(47, 48, 89);
+        width: 40px;
+        height: 40px;
+        text-align: center;
+
+        border-radius: 20px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        transition-property: background-color, opacity, visibility;
+        transition-duration: 0.3s, 0.5s, 0.5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 999;
+      }
+
+      #backtotop::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-size: 1.5rem;
+        line-height: 40px;
+        color: #fff;
+      }
+
+      #backtotop.show:hover {
+        cursor: pointer;
+        background-color: #2186c4;
+      }
+
+      #backtotop.show {
+        opacity: 1;
+        visibility: visible;
+        background-color: rgb(47, 48, 49);
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <script>
+      $("form[name=search-box]").submit(function (e) {
+        var $form = $(this);
+        var data = $form.serialize();
+
+        $.ajax({
+          type: "POST",
+          url: "/keyword/search",
+          data: data,
+          dataType: "json",
+          success: function (response) {
+            console.log(response);
+          },
+        });
+      });
+    </script>
+
+    <a id="backtotop" href="#"></a>
+
+    <header id="header">
+      <div class="header">
+        <div class="row">
+          <div class="header_menu">
+            <a href="/contents" class="contents-btn">QnA</a>
+            <a href="/mypage" class="mypage-btn">Mypage</a>
+            <a href="/main/user" class="home-btn">Home</a>
+            <a href="/user/signout" class="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <center>
+      <div class=logo-box>QUES<span>?</span>TION
+      </div>
+      <form
+        name="search-box"
+        method="POST"
+        class="search-box"
+        action="/keyword/search"
+      >
+        <div class="inputBox keyword-inputbox">
+          <input
+            type="text"
+            id="keyword"
+            name="keyword"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <br />검색 범위:
+        <input type="radio" value="all" name="scope" checked />모든 글
+        <input type="radio" value="useronly" name="scope" />나의 글<br />
+
+        <br />정렬 기준:
+        <input type="radio" value="recent" name="align-standard" checked />최근 글
+        <input type="radio" value="like" name="align-standard" />공감 수<br />
+        <br />
+        <input
+          name="submit"
+          id="submit"
+          type="submit"
+          value="검색"
+          class="search-btn"
+        />
+
+      </form>
+      <br />
+      <p id="description">
+        <span class="range-text">{{range}}</span>에서
+        <span class="keyword-text">"{{keyword}}"</span>을(를) 검색한 결과입니다.
+      </p>
+      <div class="results-list">
+        <ul>
+          {% for result in results %}
+          <li class="result-showcard">
+            <div class="result-question-container">
+              <div class="result-question-text">{{result['question']}}</div>
+            </div>
+            <span class="article-id-hidden">{{result['_id']}}</span>
+            <div class="result-answer-text">{{result['answer']}}</div>
+
+            <a style="cursor: pointer" class="like-btn" href="#">
+              <span class="likes-num">{{result['like']}}</span>
+              <img
+                src="/static/image/heart-white.png"
+                onmouseover="this.src='../static/image/heart-red-like.png'"
+                onmouseout="this.src='../static/image/heart-white.png'"
+                id="like-btn_image"
+                class="like-btn_image"
+              />
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </center>
+
+    <script>
+      $("a").click(function (event) {
+        eventElem = event.target;
+        testElem = eventElem.parentElement;
+        targetElem = testElem.previousElementSibling.previousElementSibling;
+        id_of_article = targetElem.innerText;
+        console.log(id_of_article)
+
+
+        $.ajax({
+          type: "POST",
+          url: "/like",
+          data: { article_id_give: id_of_article },
+          success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+          },
+        });
+      });
+    </script>
+  </body>
 </html>

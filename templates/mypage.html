@@ -97,13 +97,18 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
+
+        details .answer-cards .answer-card span {
+            font-size: 12px;
+            color: gray;
+        }
     </style>
 
     <script>
         //로그아웃 알림 로그아웃
         function confirmLogout() {
             if (confirm("로그아웃 하시겠습니까?")) {
-                location.href ='/'
+                location.href ='/user/signout'
             }
         }
         //infinite paging
@@ -145,7 +150,6 @@
                 _scrollchk = false;
                 $(".loading").hide();
                 skeleton.hide();
-
             }
         });
     </script>
@@ -162,6 +166,7 @@
                         let question = response['all_answers'][i]['question']
                         let answer = response['all_answers'][i]['answer']
                         let time = response['all_answers'][i]['time']
+                        let likes = response['all_answers'][i]['like']
 
                         let temp_html = `<details>
                                             <summary>
@@ -171,6 +176,8 @@
                                                 <article class="answer-card">
                                                     <time>${time}</time>
                                                     <h3>${answer}</h3>
+                                                    <br><br>
+                                                    <span>${likes}명이 공감했어요</span>
                                                 </article>
                                             </div>
                                         </details>`
@@ -316,7 +323,7 @@
     <header>
         <div id="nav">
             <div class="dropdown">
-                <a class="mypagebtn" href="/"><br>Home</a>
+                <a class="mypagebtn" href="/main/user"><br>Home</a>
                 <a class="mypagebtn" href="/contents">QnA</a>
             </div>
             <div id="logbtn">
@@ -325,7 +332,7 @@
         </div>
     </header>
     <div class="wrap">
-        <div class="list-title">답변 모아보기</div>
+        <div class="list-title">나의 답변 모아보기</div>
         <div class="answer-list">
 
         </div>

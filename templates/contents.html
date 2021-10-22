@@ -174,7 +174,7 @@
         /*헤더 스타일*/
         #nav {
             width: 100vw;
-            height: 7vh;
+            height: 55px;
             background: #ff3300;
             display: inline-flex;
             flex-direction: row;
@@ -258,7 +258,7 @@
                 },
             });
         }
-
+    console.log(session['user'])
         //질문 div 클릭시 높이변화(답변창 팝업) 이벤트 전파 중단
         function cancelPropagation(event) {
             if (event.stopPropagation) {
@@ -273,7 +273,7 @@
         /*로그아웃 알림 로그아웃*/
         function confirmLogout() {
             if (confirm("로그아웃 하시겠습니까?")) {
-                location.href = '/'
+                location.href = '/user/signout'
             }
         }
     </script>
@@ -283,7 +283,7 @@
     <header>
         <div id="nav">
             <div class="dropdown">
-                <a class="mypagebtn" href="/"><br>Home</a>
+                <a class="mypagebtn" href="/main/user"><br>Home</a>
                 <a class="mypagebtn" href="/mypage">My page</a>
             </div>
             <div id="logbtn">

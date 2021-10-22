@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -18,7 +20,7 @@ q_packages_html = q_packages.findAll("a")
 translator = Translator()
 
 # pymongo
-client = MongoClient('mongodb://test:test@localhost', 27017)
+client = MongoClient('mongodb://bbackco:Qkrzh2ndp@localhost', 27017)
 # client = MongoClient('localhost', 27017)
 db = client.dbbbackco
 
