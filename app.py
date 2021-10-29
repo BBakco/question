@@ -74,7 +74,6 @@ def search():
     return render_template('search.html')
 
 
-# admin 페이지
 @app.route('/bbackcoadminbback')
 def admin():
     return render_template('admin2.html')
