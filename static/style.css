@@ -458,7 +458,7 @@ a {
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
-  background-color: rgba(194, 193, 193, 0.787);
+  background-color: rgb(216, 216, 216);
   position: relative;
 }
 
@@ -467,7 +467,7 @@ a {
 }
 
 .qna-showcard:hover {
-  background-color: rgb(224, 224, 224);
+  background-color: rgb(238, 238, 238);
   box-shadow: 10px 10px 10px 0px rgba(25, 42, 70, 0.2);
   transform: translate(0, -5px);
   transition-duration: 0.6s;
@@ -479,7 +479,7 @@ a {
 
 .show-question-text {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   line-height: 180%;
   font-weight: 600;
 }
@@ -491,14 +491,28 @@ a {
 .show-answer-text {
   font-size: 1rem;
   line-height: 180%;
-  width: 100%;
+  width: 76%;
+
+  padding-right: 10px;
+  position: absolute;
+  left: 15%;
+  top: 35%;
   display: -webkit-box;
   -webkit-line-clamp: 9;
   -webkit-box-orient: vertical;
   height: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: 348;
+  font-weight: 350;
+}
+
+.thought-bubble {
+  width: 84%;
+  height: 200px;
+  position: absolute;
+  bottom: 70px;
+  left: 8%;
+  opacity: 27%;
 }
 
 .like-btn {
@@ -524,13 +538,20 @@ a {
   opacity: 0;
 }
 
+.result-writer-img {
+  width: 45px;
+  position: absolute;
+  bottom: 10px;
+  left: 45%;
+  margin: 0 auto;
+}
+
 .link-to-browsing {
   display: block;
   float: right;
   width: 200px;
   text-decoration: none;
   font-size: 18px;
-  /*font-size: 20px;*/
   color: rgb(71, 70, 70);
   padding: 10px auto;
   justify-content: end;

@@ -40,7 +40,10 @@ def login_required(func):
 # HTML 화면 보여주기
 @app.route('/')
 def home():
-    return render_template('mainpage.html')
+    if not session:
+        return render_template('mainpage.html')
+    else:
+        return render_template('mainpage_after.html')
 
 
 @app.route('/register')
@@ -71,6 +74,12 @@ def search():
     return render_template('search.html')
 
 
+# admin 페이지
+@app.route('/bbackcoadminbback')
+def admin():
+    return render_template('admin2.html')
+
+
 # 로그인 한 후에 보이는 메인페이지
 @app.route('/main/user')
 @login_required
@@ -93,9 +102,10 @@ def home_get():
     home_answer = list(db.contents.find({}, {'_id': False, 'answer': 1}).sort('like', pymongo.DESCENDING))
     home_article_id = list(db.contents.find({}, {'_id': 1}).sort('like', pymongo.DESCENDING))
     home_likes = list(db.contents.find({}, {'like': 1}).sort('like', pymongo.DESCENDING))
-
+    home_img = list(db.contents.find({}, {'img': 1}).sort('like', pymongo.DESCENDING))
     return jsonify(
-        {'home_q': home_question, 'home_a': home_answer, 'home_id_atc': home_article_id, 'home_like': home_likes})
+        {'home_q': home_question, 'home_a': home_answer, 'home_id_atc': home_article_id, 'home_like': home_likes,
+         'home_img': home_img})
 
 
 # contents
@@ -114,6 +124,11 @@ def contents_post():
     answer_receive = request.form['answer_give']
     # 이 아래 writer가 세션에 들어가 있는 현재 사용자의 email 정보를 받아오는 변수
     writer = session['user']['email']
+    # print(writer)
+    # img = db.contents.find({'user':session['user']['email']}, {'img':1, '_id':0})['img']
+    img = db.users.find_one({'email': session['user']['email']}, {'img': 1})
+    img = img['img']
+    print(img)
 
     # 시각 데이터로 원하는 문자열 만들기(한글일 경우)
     time_now = datetime.now()
@@ -128,7 +143,8 @@ def contents_post():
         'answer': answer_receive,
         'time': now_text,
         'user': writer,
-        'like': 0
+        'like': 0,
+        'img': img
     }
 
     db.contents.insert_one(doc)
@@ -151,6 +167,20 @@ def read_answers():
 #     articles = db.users.find({'email':session['user']['email']},{})
 
 
+# search페이지 처음에 GET 띄우기
+@app.route('/search/get', methods=['GET'])
+def browse():
+    answer_li = list()
+    docs = db.contents.find({}).sort('time', pymongo.DESCENDING).limit(39)
+
+    for doc in docs:
+        answer_li.append(doc)
+    results = answer_li
+    return jsonify({'all_results': results})
+
+    # return render_template('search.html', results = results, range = '모든 글', keyword = '')
+
+
 # 키워드 검색 페이지
 @app.route('/keyword/search', methods=['POST'])
 def keywordsearch():
@@ -162,92 +192,77 @@ def keywordsearch():
 
     if scope == 'all':
         docs = contents.find({'$or': [{'answer': {'$regex': word}}, {'question': {'$regex': word}}]},
-                             {'_id': 1, 'question': 1, 'answer': 1, 'like': 1})
+                             {'_id': 1, 'question': 1, 'answer': 1, 'like': 1, 'img': 1})
         if standard == 'recent':
             docs.sort('time', pymongo.DESCENDING)
             for doc in docs:
                 answer_li.append(doc)
             results = answer_li
-            return render_template('search.html', results=results, range='모든 글', keyword=word)
+            return render_template('search.html', results=results, range='모든 글', keyword=word, criterion='recent')
         elif standard == 'like':
             docs.sort('like', pymongo.DESCENDING)
             for doc in docs:
                 answer_li.append(doc)
             results = answer_li
-            return render_template('search.html', results=results, range='모든 글', keyword=word)
+            return render_template('search.html', results=results, range='모든 글', keyword=word, criterion='like')
+        elif not standard:
+            flash("정렬기준을 선택해주세요")
+            return render_template('search.html')
     elif scope == 'useronly':
         docs = contents.find(
             {'user': session['user']['email'], '$or': [{'answer': {'$regex': word}}, {'question': {'$regex': word}}]},
-            {'_id': 1, 'question': 1, 'answer': 1, 'like': 1})
+            {'_id': 1, 'question': 1, 'answer': 1, 'like': 1, 'img': 1})
         if standard == 'recent':
             docs.sort('time', pymongo.DESCENDING)
             for doc in docs:
                 answer_li.append(doc)
             results = answer_li
-            return render_template('search.html', results=results, range='나의 글', keyword=word)
+            return render_template('search.html', results=results, range='나의 글', keyword=word, criterion='recent')
         elif standard == 'like':
             docs.sort('like', pymongo.DESCENDING)
             for doc in docs:
                 answer_li.append(doc)
             results = answer_li
-            return render_template('search.html', results=results, range='나의 글', keyword=word)
+            return render_template('search.html', results=results, range='나의 글', keyword=word, criterion='like')
+        elif not standard:
+            flash("정렬기준을 선택해주세요")
+            return render_template('search.html')
+    elif not scope and not standard:
+        flash("검색 범위와 정렬 기준을 선택해주세요")
+        return render_template('search.html')
+    elif not scope:
+        flash("검색 범위를 선택해주세요")
+        return render_template('search.html')
 
 
 # 검색페이지에서 좋아요 기능
 @app.route('/like', methods=['POST'])
 def like():
-    contents = db.contents
-    article_id_receive = request.form['article_id_give']
-    target = contents.find_one({'_id': article_id_receive}, {'_id': 1})
-    print(target)
+    if session:
+        contents = db.contents
+        article_id_receive = request.form['article_id_give']
+        target = contents.find_one({'_id': article_id_receive}, {'_id': 1})
+        # print(target)
 
-    already_liked = db.users.find_one({'email': session['user']['email']}, {'article-liked': 1, '_id': 0})
-    already_liked_list = already_liked['article-liked']
+        already_liked = db.users.find_one({'email': session['user']['email']}, {'article-liked': 1, '_id': 0})
+        already_liked_list = already_liked['article-liked']
 
-    current_like = contents.find_one({'_id': article_id_receive})['like']
-    print(current_like)
-    new_like = current_like + 1
+        current_like = contents.find_one({'_id': article_id_receive})['like']
+        # print(current_like)
+        new_like = current_like + 1
 
-    # target_without_like = contents.find_one({'_id':article_id_receive}, {'like':0})
-    # # print(already_liked_list)
+        # target_without_like = contents.find_one({'_id':article_id_receive}, {'like':0})
+        # # print(already_liked_list)
 
-    if target in already_liked_list:
-        return jsonify({'msg': '이미 공감한 글입니다.'})
+        if target in already_liked_list:
+            return jsonify({'msg': '이미 공감한 글입니다.'})
+        else:
+            already_liked_list.append(target)
+            db.users.update_one({'email': session['user']['email']}, {'$set': {'article-liked': already_liked_list}})
+            contents.update_one({'_id': article_id_receive}, {'$set': {'like': new_like}})
+            return jsonify({'msg': '공감 완료!'})
     else:
-        already_liked_list.append(target)
-        db.users.update_one({'email': session['user']['email']}, {'$set': {'article-liked': already_liked_list}})
-        contents.update_one({'_id': article_id_receive}, {'$set': {'like': new_like}})
-        return jsonify({'msg': '공감 완료!'})
-    # return jsonify({'msg': '연결!'})
-
-
-# 이전의 회원가입 코드.
-# # register
-# @app.route('/register', methods=['POST'])
-# def register_info():
-#     username_receive = request.form['username_give']
-#     email_receive = request.form['email_give']
-#     pw_receive = request.form['pw_give']
-#     repeatpw_receive = request.form['repeatpw_give']
-
-#     if "@" not in email_receive:
-#         return jsonify({'msg': '이메일을 입력해주세요.'})
-
-#     elif '.' not in email_receive:
-#         return jsonify({'msg': '이메일을 완성해주세요'})
-
-#     elif not (email_receive and pw_receive and repeatpw_receive):
-#         return jsonify({'msg': '모두 입력해주세요'})
-
-#     doc = {
-#         'username': username_receive,
-#         'email': email_receive,
-#         'pw': pw_receive,
-#         'repeatpw': repeatpw_receive
-#     }
-
-#     db.register.insert_one(doc)
-#     return jsonify({'msg': '회원가입 완료!'})
+        return jsonify({'msg': '로그인 후 공감부탁드려요😄'})
 
 
 # 이하  models.py 부분
@@ -264,7 +279,7 @@ class User:
     # flash 띄울 때 '00님'부르도록 하자
 
     def signup(self):
-        print(request.form)
+        # print(request.form)
 
         # user객체 생성하기
         user = {
@@ -272,8 +287,12 @@ class User:
             "name": request.form.get('name'),
             "email": request.form.get('email'),
             "password": request.form.get('password'),
-            "article-liked": []
+            "article-liked": [],
+            "img": request.form.get('img-select')
         }
+
+        myimg = user['img']
+        # print(myimg)
 
         # password 암호화(encryption) -- 여러 시도들
         # user['password'] = pbkdf2_sha256.hash(user['password'])

@@ -1,103 +1,103 @@
 {% with messages = get_flashed_messages() %} {% if messages %}
-    <script>
-        alert("{{messages[-1]}}");
-    </script>
+<script>
+  alert("{{messages[-1]}}");
+</script>
 {% endif %} {% endwith %}
 
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="utf-8"/>
-    <meta name="author" content="BBakco"/>
-    <meta name="description" content=""/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="BBakco" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1"
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1"
     />
 
     <!-- 이 아래 태그 추가함(정현). 화면 렌더링할 때 최신의 인터넷 엔진을 쓰라는 뜻의 ?-->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <meta property="og:title" content="QnAnswers"/>
+    <meta property="og:title" content="QnAnswers" />
     <meta
-            property="og:description"
-            content="당신이 대답하고 싶은 모든 질문들"
+      property="og:description"
+      content="당신이 대답하고 싶은 모든 질문들"
     />
-    <meta property="og:image" content="/static/image/ogimage.png"/>
+    <meta property="og:image" content="/static/image/ogimage.png" />
 
     <!-- http://ogp.me/ -->
 
-    <meta property="og:type" content="website"/>
+    <meta property="og:type" content="website" />
 
-    <meta property="og:site_name" content="QnAnswers"/>
+    <meta property="og:site_name" content="QnAnswers" />
 
-    <meta property="og:title" content="QnAnswers"/>
+    <meta property="og:title" content="QnAnswers" />
 
-    <meta property="og:description" content="당신이 하고 싶은 모든 질문들"/>
+    <meta property="og:description" content="당신이 하고 싶은 모든 질문들" />
 
-    <meta property="og:image" content="/static/image/ogimage.png"/>
+    <meta property="og:image" content="/static/image/ogimage.png" />
 
-    <meta property="og:url" content="qnanswers.shop"/>
+    <meta property="og:url" content="qnanswers.shop" />
 
     <!-- https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started.html -->
-    <meta property="twitter:card" content=""/>
-    <meta property="twitter:site" content=""/>
-    <meta property="twitter:title" content=""/>
-    <meta property="twitter:description" content=""/>
-    <meta property="twitter:image" content=""/>
-    <meta property="twitter:url" content=""/>
+    <meta property="twitter:card" content="" />
+    <meta property="twitter:site" content="" />
+    <meta property="twitter:title" content="" />
+    <meta property="twitter:description" content="" />
+    <meta property="twitter:image" content="" />
+    <meta property="twitter:url" content="" />
 
     <title>QnAnswers</title>
 
     <!-- CSS reset, CSS style, Jquery import -->
-    <link rel="stylesheet" href="/static/reset.css"/>
+    <link rel="stylesheet" href="/static/reset.css" />
 
     <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-            crossorigin="anonymous"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
     />
     <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
     ></script>
 
-    <link rel="stylesheet" href="/static/style.css"/>
+    <link rel="stylesheet" href="/static/style.css" />
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <!-- 일반적인 fabicon 설정 (정현) -->
-    <link rel="icon" href="../static/image/fabicon.ico"/>
+    <link rel="icon" href="../static/image/fabicon.ico" />
     <!-- 아이폰용 fabicon 설정 (정현) -->
-    <link rel="apple-touch-icon" href="../static/image/fabicon.ico"/>
+    <link rel="apple-touch-icon" href="../static/image/fabicon.ico" />
     <!-- 인터넷 익스플로러용 fabicon 설정 -->
     <link
-            rel="short icon"
-            type="image/x-icon"
-            href="../static/image/fabicon.ico"
+      rel="short icon"
+      type="image/x-icon"
+      href="../static/image/fabicon.ico"
     />
 
     <!-- https://fontawesome.com/start -->
     <script
-            src="https://kit.fontawesome.com/f1def33959.js"
-            crossorigin="anonymous"
+      src="https://kit.fontawesome.com/f1def33959.js"
+      crossorigin="anonymous"
     ></script>
 
     <!-- Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-            rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+      rel="stylesheet"
     />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-            href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap"
-            rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap"
+      rel="stylesheet"
     />
 
     <!-- <script src="js/main.js"></script> -->
@@ -108,62 +108,71 @@
     <script defer src="/static/js/footericon.js"></script>
     <script src="/static/js/jquery.js"></script>
     <script>
-        Kakao.init("6c488a809443edb2caac91994d2af0a5");
-        Kakao.isInitialized();
+      Kakao.init("6c488a809443edb2caac91994d2af0a5");
+      Kakao.isInitialized();
     </script>
     <script defer src="/static/js/sharing.js"></script>
 
     <script>
-        function startToAnswer() {
-            alert("질문 시작합니다🌝!");
-        }
+      function startToAnswer() {
+        alert("질문 시작합니다🌝!");
+      }
     </script>
 
     <script>
-        window.onload = function () {
-            $.ajax({
-                type: "GET",
-                url: "/get",
-                data: {},
-                success: function (response) {
-                    let questions = response["home_q"];
-                    let answers = response["home_a"];
-                    let ids = response["home_id_atc"];
-                    let likes = response["home_like"];
+      window.onload = function () {
+        $.ajax({
+          type: "GET",
+          url: "/get",
+          data: {},
+          success: function (response) {
+            let questions = response["home_q"];
+            let answers = response["home_a"];
+            let ids = response["home_id_atc"];
+            let likes = response["home_like"];
+            let img = response["home_img"];
 
-                    let question_0 = questions[0]["question"];
-                    let question_1 = questions[1]["question"];
-                    let question_2 = questions[2]["question"];
-                    let question_3 = questions[3]["question"];
-                    let question_4 = questions[4]["question"];
-                    let question_5 = questions[5]["question"];
-                    let question_6 = questions[6]["question"];
+            let question_0 = questions[0]["question"];
+            let question_1 = questions[1]["question"];
+            let question_2 = questions[2]["question"];
+            let question_3 = questions[3]["question"];
+            let question_4 = questions[4]["question"];
+            let question_5 = questions[5]["question"];
+            let question_6 = questions[6]["question"];
 
-                    let answer_0 = answers[0]["answer"];
-                    let answer_1 = answers[1]["answer"];
-                    let answer_2 = answers[2]["answer"];
-                    let answer_3 = answers[3]["answer"];
-                    let answer_4 = answers[4]["answer"];
-                    let answer_5 = answers[5]["answer"];
-                    let answer_6 = answers[6]["answer"];
+            let answer_0 = answers[0]["answer"];
+            let answer_1 = answers[1]["answer"];
+            let answer_2 = answers[2]["answer"];
+            let answer_3 = answers[3]["answer"];
+            let answer_4 = answers[4]["answer"];
+            let answer_5 = answers[5]["answer"];
+            let answer_6 = answers[6]["answer"];
 
-                    let id_a_0 = ids[0]["_id"];
-                    let id_a_1 = ids[1]["_id"];
-                    let id_a_2 = ids[2]["_id"];
-                    let id_a_3 = ids[3]["_id"];
-                    let id_a_4 = ids[4]["_id"];
-                    let id_a_5 = ids[5]["_id"];
-                    let id_a_6 = ids[6]["_id"];
+            let id_a_0 = ids[0]["_id"];
+            let id_a_1 = ids[1]["_id"];
+            let id_a_2 = ids[2]["_id"];
+            let id_a_3 = ids[3]["_id"];
+            let id_a_4 = ids[4]["_id"];
+            let id_a_5 = ids[5]["_id"];
+            let id_a_6 = ids[6]["_id"];
 
-                    let like_0 = likes[0]["like"];
-                    let like_1 = likes[1]["like"];
-                    let like_2 = likes[2]["like"];
-                    let like_3 = likes[3]["like"];
-                    let like_4 = likes[4]["like"];
-                    let like_5 = likes[5]["like"];
-                    let like_6 = likes[6]["like"];
+            let like_0 = likes[0]["like"];
+            let like_1 = likes[1]["like"];
+            let like_2 = likes[2]["like"];
+            let like_3 = likes[3]["like"];
+            let like_4 = likes[4]["like"];
+            let like_5 = likes[5]["like"];
+            let like_6 = likes[6]["like"];
 
-                    let temp_html = `<li class="qna-showcard qna-showcard-0">
+            let img_0 = img[0]["img"];
+            let img_1 = img[1]["img"];
+            let img_2 = img[2]["img"];
+            let img_3 = img[3]["img"];
+            let img_4 = img[4]["img"];
+            let img_5 = img[5]["img"];
+            let img_6 = img[6]["img"];
+
+            let temp_html = `<li class="qna-showcard qna-showcard-0">
                                             <div class="show-question-container">
                                                 <div class="show-question-text">${question_0}</div>
                                             </div>
@@ -171,7 +180,7 @@
                                                 <div class="show-answer-text">${answer_0}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_0}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                             <span class="likes-num">${like_0}</span>
                                             <img
                                               src="/static/image/heart-white.png"
@@ -181,6 +190,8 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_0}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>
                                      <li class="qna-showcard qna-showcard-1">
                                             <div class="show-question-container">
@@ -190,7 +201,7 @@
                                                 <div class="show-answer-text">${answer_1}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_1}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                               <span class="likes-num">${like_1}</span>
                                               <img
                                               src="/static/image/heart-white.png"
@@ -200,6 +211,8 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_1}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>
                                      <li class="qna-showcard qna-showcard-2">
                                             <div class="show-question-container">
@@ -209,7 +222,7 @@
                                                 <div class="show-answer-text">${answer_2}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_2}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                               <span class="likes-num">${like_2}</span>
                                               <img
                                               src="/static/image/heart-white.png"
@@ -219,6 +232,8 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_2}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>
                                      <li class="qna-showcard qna-showcard-3">
                                             <div class="show-question-container">
@@ -228,7 +243,7 @@
                                                 <div class="show-answer-text">${answer_3}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_3}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                               <span class="likes-num">${like_3}</span>
                                               <img
                                               src="/static/image/heart-white.png"
@@ -238,6 +253,8 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_3}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>
                                      <li class="qna-showcard qna-showcard-4">
                                             <div class="show-question-container">
@@ -247,7 +264,7 @@
                                                 <div class="show-answer-text">${answer_4}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_4}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                               <span class="likes-num">${like_4}</span>
                                               <img
                                               src="/static/image/heart-white.png"
@@ -257,6 +274,8 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_4}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>
                                      <li class="qna-showcard qna-showcard-5">
                                             <div class="show-question-container">
@@ -266,7 +285,7 @@
                                                 <div class="show-answer-text">${answer_5}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_5}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                               <span class="likes-num">${like_5}</span>
                                               <img
                                               src="/static/image/heart-white.png"
@@ -276,6 +295,8 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_5}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>
                                      <li class="qna-showcard qna-showcard-6">
                                             <div class="show-question-container">
@@ -285,7 +306,7 @@
                                                 <div class="show-answer-text">${answer_6}</div>
                                             </div>
                                             <span class="article-id-hidden">${id_a_6}</span>
-                                            <a style="cursor: pointer" class="like-btn" href="#">
+                                            <a style="cursor: pointer" class="like-btn">
                                               <span class="likes-num">${like_6}</span>
                                               <img
                                               src="/static/image/heart-white.png"
@@ -295,303 +316,306 @@
                                               class="like-btn_image"
                                             />
                                             </a>
+                                            <img class="result-writer-img" src="${img_6}">
+                                            <img class="thought-bubble" src="/static/image/thought-bubble.png">
                                      </li>`;
 
-                    $("#qna-showlist").append(temp_html);
+            $("#qna-showlist").append(temp_html);
 
-                    $("a").click(function (event) {
-                        eventElem = event.target;
-                        targetElem = eventElem.parentElement.previousElementSibling;
-                        id_of_article = targetElem.innerText;
-                        console.log(id_of_article)
+            $("a").click(function (event) {
+              eventElem = event.target;
+              targetElem = eventElem.parentElement.previousElementSibling;
+              id_of_article = targetElem.innerText;
+              console.log(id_of_article)
 
 
-                        $.ajax({
-                            type: "POST",
-                            url: "/like",
-                            data: {article_id_give: id_of_article},
-                            success: function (response) {
-                                alert(response["msg"]);
-                                window.location.reload();
-                            },
-                        });
-                    });
+              $.ajax({
+                type: "POST",
+                url: "/like",
+                data: { article_id_give: id_of_article },
+                success: function (response) {
+                  alert(response["msg"]);
+                  window.location.href = '/main/user'
 
-                    // 화면 너비//
-                    var windowWidth = $(window).width();
-
-                    let slideNext = document.querySelector(".slide-next");
-                    let slidePrev = document.querySelector(".slide-prev");
-
-                    let qnaBox = document.querySelector(".qna-showlist");
-                    let card = document.querySelectorAll(".qna-showlist li");
-                    let currentIndex = 0;
-                    let cardCount = card.length;
-                    let cardWidth = 340;
-                    let cardMargin = 40;
-
-                    makeClone();
-
-                    function makeClone() {
-                        for (var i = 0; i < cardCount; i++) {
-                            var cloneCard = card[i].cloneNode(true);
-                            cloneCard.classList.add("clone");
-                            qnaBox.appendChild(cloneCard);
-                        }
-                        for (var i = cardCount - 1; i >= 0; i--) {
-                            var cloneCard = card[i].cloneNode(true);
-                            cloneCard.classList.add("clone");
-                            qnaBox.prepend(cloneCard);
-                        }
-                        updateWidth();
-                        setInitialPos();
-                        setTimeout(function () {
-                            qnaBox.classList.add("animated");
-                        }, 100);
-                    }
-
-                    function updateWidth() {
-                        var currentCards = document.querySelectorAll(".qna-showlist li");
-                        var newCardCount = currentCards.length;
-
-                        var newWidth =
-                            (cardWidth + cardMargin) * newCardCount - cardMargin + "px";
-                        qnaBox.style.width = newWidth;
-                    }
-
-                    function setInitialPos() {
-                        var initialTranslateValue = -(cardWidth + cardMargin) * cardCount;
-                        qnaBox.style.transform =
-                            "translateX(" + initialTranslateValue + "px)";
-                    }
-
-                    slideNext.addEventListener("click", function () {
-                        moveSlide(currentIndex + 1);
-                    });
-
-                    slidePrev.addEventListener("click", function () {
-                        moveSlide(currentIndex - 1);
-                    });
-
-                    function moveSlide(num) {
-                        qnaBox.style.left = -num * (cardWidth + cardMargin) + "px";
-                        currentIndex = num;
-                        console.log(currentIndex, cardCount);
-                        if (currentIndex == cardCount || currentIndex == -cardCount) {
-                            setTimeout(function () {
-                                qnaBox.classList.remove("animated");
-                                qnaBox.style.left = "0px";
-                                currentIndex = 0;
-                            }, 500);
-                            setTimeout(function () {
-                                qnaBox.classList.add("animated");
-                            }, 600);
-                        }
-                    }
                 },
+              });
             });
-        };
+
+            // 화면 너비//
+            var windowWidth = $(window).width();
+
+            let slideNext = document.querySelector(".slide-next");
+            let slidePrev = document.querySelector(".slide-prev");
+
+            let qnaBox = document.querySelector(".qna-showlist");
+            let card = document.querySelectorAll(".qna-showlist li");
+            let currentIndex = 0;
+            let cardCount = card.length;
+            let cardWidth = 340;
+            let cardMargin = 40;
+
+            makeClone();
+
+            function makeClone() {
+              for (var i = 0; i < cardCount; i++) {
+                var cloneCard = card[i].cloneNode(true);
+                cloneCard.classList.add("clone");
+                qnaBox.appendChild(cloneCard);
+              }
+              for (var i = cardCount - 1; i >= 0; i--) {
+                var cloneCard = card[i].cloneNode(true);
+                cloneCard.classList.add("clone");
+                qnaBox.prepend(cloneCard);
+              }
+              updateWidth();
+              setInitialPos();
+              setTimeout(function () {
+                qnaBox.classList.add("animated");
+              }, 100);
+            }
+
+            function updateWidth() {
+              var currentCards = document.querySelectorAll(".qna-showlist li");
+              var newCardCount = currentCards.length;
+
+              var newWidth =
+                (cardWidth + cardMargin) * newCardCount - cardMargin + "px";
+              qnaBox.style.width = newWidth;
+            }
+
+            function setInitialPos() {
+              var initialTranslateValue = -(cardWidth + cardMargin) * cardCount;
+              qnaBox.style.transform =
+                "translateX(" + initialTranslateValue + "px)";
+            }
+
+            slideNext.addEventListener("click", function () {
+              moveSlide(currentIndex + 1);
+            });
+
+            slidePrev.addEventListener("click", function () {
+              moveSlide(currentIndex - 1);
+            });
+
+            function moveSlide(num) {
+              qnaBox.style.left = -num * (cardWidth + cardMargin) + "px";
+              currentIndex = num;
+              console.log(currentIndex, cardCount);
+              if (currentIndex == cardCount || currentIndex == -cardCount) {
+                setTimeout(function () {
+                  qnaBox.classList.remove("animated");
+                  qnaBox.style.left = "0px";
+                  currentIndex = 0;
+                }, 500);
+                setTimeout(function () {
+                  qnaBox.classList.add("animated");
+                }, 600);
+              }
+            }
+          },
+        });
+      };
     </script>
 
     <script>
-        //로그아웃 알림 로그아웃
-        function confirmLogout() {
-            if (confirm("로그아웃 하시겠습니까?")) {
-                location.href = "/user/signout";
-            }
+      //로그아웃 알림 로그아웃
+      function confirmLogout() {
+        if (confirm("로그아웃 하시겠습니까?")) {
+          location.href = "/user/signout";
         }
+      }
     </script>
 
     <!--카톡 링크 공유하기 하려면 필요하다는 부분-->
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-</head>
+  </head>
 
-<body>
-<header id="header">
-    <div class="header">
+  <body>
+    <header id="header">
+      <div class="header">
         <div class="row">
-            <div class="header_menu">
-                <a href="/search" class="searchBtn">Browse</a>
-                <a href="/mypage" class="mypage-btn">Mypage</a>
-                <a href="/user/signout" class="logoutBtn" onclick="confirmLogout()"
-                >Logout</a
-                >
-            </div>
+          <div class="header_menu">
+            <a href="/search" class="searchBtn">Browse</a>
+            <a href="/mypage" class="mypage-btn">Mypage</a>
+            <a href="/user/signout" class="logoutBtn" onclick="confirmLogout()"
+              >Logout</a
+            >
+          </div>
         </div>
-    </div>
-</header>
-<section id="section_01">
-    <div class="section_01">
+      </div>
+    </header>
+    <section id="section_01">
+      <div class="section_01">
         <div class="Q_wrapper">
-            <div class="Q_text">QUES</div>
+          <div class="Q_text">QUES</div>
 
-            <a href="/contents" class="Q_image" onclick="startToAnswer()">
-                <img
-                        class="logo"
-                        src="../static/image/q-logo-black.png"
-                        onmouseover="this.src='../static/image/q-logo-white.png'"
-                        onmouseout="this.src='../static/image/q-logo-black.png'"
-                />
-            </a>
+          <a href="/contents" class="Q_image" onclick="startToAnswer()">
+            <img
+              class="logo"
+              src="../static/image/q-logo-black.png"
+              onmouseover="this.src='../static/image/q-logo-white.png'"
+              onmouseout="this.src='../static/image/q-logo-black.png'"
+            />
+          </a>
 
-            <div class="Q_text">TION</div>
+          <div class="Q_text">TION</div>
         </div>
-    </div>
-</section>
-
-<div class="inner">
-    <section id="section_02">
-        <div class="section section_02">
-            <div class="qna-container">
-                <div class="qna-title-container">
-                    <div class="qna-title">Q & A</div>
-                    <div class="arrow-container">
-                        <!-- <div class="slide-prev"><img src="../image/left.png" width="35px" height="35px" onmouseover="this.src='/image/left-dark.png'" onmouseout="this.src='/image/left.png'"></div>
-                            <div class="slide-next"><img src="../image/right.png" width="35px" height="35px" onmouseover="this.src='/image/right-dark.png'" onmouseout="this.src='/image/right.png'"></div> -->
-                        <img
-                                class="slide-prev"
-                                src="../static/image/left.png"
-                                width="35px"
-                                height="35px"
-                                onmouseover="this.src='/static/image/left-dark.png'"
-                                onmouseout="this.src='/static/image/left.png'"
-                        />
-                        <img
-                                class="slide-next"
-                                src="../static/image/right.png"
-                                width="35px"
-                                height="35px"
-                                onmouseover="this.src='/static/image/right-dark.png'"
-                                onmouseout="this.src='/static/image/right.png'"
-                        />
-                    </div>
-                </div>
-                <div class="qna-desc">
-                    다른 사람들은 지금 어떤 생각을 하고 있을까요?
-                </div>
-                <ul id="qna-showlist" class="qna-showlist" data-position="0"></ul>
-                <a href="../search" class="link-to-browsing">모든 글 둘러보기&nbsp;&nbsp;☛&nbsp;&nbsp;</a>
-            </div>
-        </div>
+      </div>
     </section>
-</div>
 
-<a id="backtotop" href="#"></a>
+    <div class="inner">
+      <section id="section_02">
+        <div class="section section_02">
+          <div class="qna-container" id="qna-container">
+            <div class="qna-title-container">
+              <div class="qna-title">Q & A</div>
+              <div class="arrow-container">
+                <!-- <div class="slide-prev"><img src="../image/left.png" width="35px" height="35px" onmouseover="this.src='/image/left-dark.png'" onmouseout="this.src='/image/left.png'"></div>
+                    <div class="slide-next"><img src="../image/right.png" width="35px" height="35px" onmouseover="this.src='/image/right-dark.png'" onmouseout="this.src='/image/right.png'"></div> -->
+                <img
+                  class="slide-prev"
+                  src="../static/image/left.png"
+                  width="35px"
+                  height="35px"
+                  onmouseover="this.src='/static/image/left-dark.png'"
+                  onmouseout="this.src='/static/image/left.png'"
+                />
+                <img
+                  class="slide-next"
+                  src="../static/image/right.png"
+                  width="35px"
+                  height="35px"
+                  onmouseover="this.src='/static/image/right-dark.png'"
+                  onmouseout="this.src='/static/image/right.png'"
+                />
+              </div>
+            </div>
+            <div class="qna-desc">
+              다른 사람들은 지금 어떤 생각을 하고 있을까요?
+            </div>
+            <ul id="qna-showlist" class="qna-showlist" data-position="0"></ul>
+            <a href="../search" class="link-to-browsing">모든 글에서 검색&nbsp;&nbsp;☛&nbsp;&nbsp;</a>
+          </div>
+        </div>
+      </section>
+    </div>
 
-<section id="section_03">
-    <div class="section_03">
+    <a id="backtotop" href="#"></a>
+
+    <section id="section_03">
+      <div class="section_03">
         <p class="member_title">Our Team Members</p>
         <div class="member">
-            <div class="member_card">
-                <img src="/static/image/ls.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">이성</span>
-                </p>
-                <p style="text-align: center">rdmshine@gmail.com</p>
-            </div>
-            <div class="member_card">
-                <img src="/static/image/pk.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">박결</span>
-                </p>
-                <p style="text-align: center">gyor@naver.com</p>
-            </div>
-            <div class="member_card">
-                <img src="/static/image/mj.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">서민정</span>
-                </p>
-                <p style="text-align: center">pig5000kg@naver.com</p>
-            </div>
-            <div class="member_card">
-                <img src="/static/image/ys.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">김영선</span>
-                </p>
-                <p style="text-align: center">ttjsl0101@gmail.com</p>
-            </div>
-            <div class="member_card">
-                <img src="/static/image/jh.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">김정현</span>
-                </p>
-                <p style="text-align: center">skjh0807s@naver.com</p>
-            </div>
+          <div class="member_card">
+            <img src="/static/image/ls.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">이성</span>
+            </p>
+            <p style="text-align: center">rdmshine@gmail.com</p>
+          </div>
+          <div class="member_card">
+            <img src="/static/image/pk.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">박결</span>
+            </p>
+            <p style="text-align: center">gyor@naver.com</p>
+          </div>
+          <div class="member_card">
+            <img src="/static/image/mj.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">서민정</span>
+            </p>
+            <p style="text-align: center">pig5000kg@naver.com</p>
+          </div>
+          <div class="member_card">
+            <img src="/static/image/ys.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">김영선</span>
+            </p>
+            <p style="text-align: center">ttjsl0101@gmail.com</p>
+          </div>
+          <div class="member_card">
+            <img src="/static/image/jh.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">김정현</span>
+            </p>
+            <p style="text-align: center">skjh0807s@naver.com</p>
+          </div>
         </div>
         <p class="member_title">Special Thanks To</p>
         <div class="member">
-            <div class="member_card">
-                <img src="/static/image/hs.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">황선애 매니저</span>
-                </p>
-                <p style="text-align: center"></p>
-            </div>
-            <div class="member_card">
-                <img src="/static/image/yr.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">왕예리 매니저</span>
-                </p>
-                <p style="text-align: center"></p>
-            </div>
-            <div class="member_card">
-                <img src="/static/image/bh.png" alt="member" class="member_img"/>
-                <p style="text-align: center">
-                    <span style="font-weight: bold">양봉현 튜터</span>
-                </p>
-                <p style="text-align: center"></p>
-            </div>
+          <div class="member_card">
+            <img src="/static/image/hs.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">황선애 매니저</span>
+            </p>
+            <p style="text-align: center"></p>
+          </div>
+          <div class="member_card">
+            <img src="/static/image/yr.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">왕예리 매니저</span>
+            </p>
+            <p style="text-align: center"></p>
+          </div>
+          <div class="member_card">
+            <img src="/static/image/bh.png" alt="member" class="member_img" />
+            <p style="text-align: center">
+              <span style="font-weight: bold">양봉현 튜터</span>
+            </p>
+            <p style="text-align: center"></p>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<footer id="footer">
-    <div class="footer_icon footer_icon--after">
+    <footer id="footer">
+      <div class="footer_icon footer_icon--after">
         <ul>
-            <li>
-                <a
-                        style="cursor: pointer"
-                        class="kakaotalk"
-                        onclick="js:kakaoShare()"
-                >
-                    <img src="/static/image/kakaotalk.svg"/>
-                    <span>KakaoTalk</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="facebook">
-                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                    <span>Facebook</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" class="twitter"
-                ><i class="fa fa-twitter" aria-hidden="true"></i>
-                    <span>twitter</span>
-                </a>
-            </li>
+          <li>
+            <a
+              style="cursor: pointer"
+              class="kakaotalk"
+              onclick="js:kakaoShare()"
+            >
+              <img src="/static/image/kakaotalk.svg" />
+              <span>KakaoTalk</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="facebook">
+              <i class="fa fa-facebook-square" aria-hidden="true"></i>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="twitter"
+              ><i class="fa fa-twitter" aria-hidden="true"></i>
+              <span>twitter</span>
+            </a>
+          </li>
         </ul>
         <div class="footer-icon_title">SHARE US</div>
-    </div>
-    <div class="footer">
+      </div>
+      <div class="footer">
         <p>
-            "?"(QnAnswers) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코
+          "?"(QnAnswers) BY SPARTACODINGCLUB 15일 프로젝트 챌린지 TEAM 3 빡코
         </p>
         <p>copyrightⓒ2021 빡코 All rights reserved</p>
         <a href="https://spartacodingclub.kr/"
-        ><img class="collaboration" src="/static/image/collaboration.png"
+          ><img class="collaboration" src="/static/image/collaboration.png"
         /></a>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<script>
-    $("a").click(function (event) {
+    <script>
+      $("a").click(function (event) {
         eventElem = event.target;
 
         console.log(eventElem);
 
 
-    });
-</script>
-</body>
+      });
+    </script>
+  </body>
 </html>

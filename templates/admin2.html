@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="BBakco" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1" />
+
+    <title>QnAnswers</title>
+
+    <!-- CSS reset, CSS style, Jquery import -->
+    <link rel="stylesheet" href="/static/reset.css" />
+    <link rel="stylesheet" href="/static/admin.css" />
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- bootstrap 5.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/extensions/export/bootstrap-table-export.min.js">
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <!-- 일반적인 fabicon 설정 (정현) -->
+    <link rel="icon" href="../static/image/fabicon.ico">
+    <!-- 아이폰용 fabicon 설정 (정현) -->
+    <link rel="apple-touch-icon" href="../static/image/fabicon.ico">
+    <!-- 인터넷 익스플로러용 fabicon 설정 -->
+    <link rel="short icon" type="image/x-icon" href="../static/image/fabicon.ico">
+
+
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <script>
+        /*로그아웃 알림 로그아웃*/
+        function confirmLogout() {
+            if (confirm("로그아웃 하시겠습니까?")) {
+                location.href = '/user/signout'
+            }
+        }
+    </script>
+
+    <script defer src="/static/js/checkall.js"></script>
+
+</head>
+
+
+<body>
+    <!-- header -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-auto bg-light sticky-top">
+                <div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
+                    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <i class="bi-house fs-1"></i>
+                    </a>
+                    <ul
+                        class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Home">
+                                <i class="bi-people fs-1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Dashboard">
+                                <i class="bi-question-square fs-1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip"
+                                data-bs-placement="right" data-bs-original-title="Dashboard">
+                                <i class="bi-door-open fs-1"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm p-3 min-vh-100">
+
+                <!-- content -->
+
+                <div class="container-lg">
+                    <div class="select hide">
+                        <select class="form-control" id="locale">
+                            <option value="af-ZA">af-ZA</option>
+                            <option value="ar-SA">ar-SA</option>
+                            <option value="ca-ES">ca-ES</option>
+                            <option value="cs-CZ">cs-CZ</option>
+                            <option value="da-DK">da-DK</option>
+                            <option value="de-DE">de-DE</option>
+                            <option value="el-GR">el-GR</option>
+                            <option value="en-US">en-US</option>
+                            <option value="es-AR">es-AR</option>
+                            <option value="es-CL">es-CL</option>
+                            <option value="es-CR">es-CR</option>
+                            <option value="es-ES">es-ES</option>
+                            <option value="es-MX">es-MX</option>
+                            <option value="es-NI">es-NI</option>
+                            <option value="es-SP">es-SP</option>
+                            <option value="et-EE">et-EE</option>
+                            <option value="eu-EU">eu-EU</option>
+                            <option value="fa-IR">fa-IR</option>
+                            <option value="fi-FI">fi-FI</option>
+                            <option value="fr-BE">fr-BE</option>
+                            <option value="fr-FR">fr-FR</option>
+                            <option value="he-IL">he-IL</option>
+                            <option value="hr-HR">hr-HR</option>
+                            <option value="hu-HU">hu-HU</option>
+                            <option value="id-ID">id-ID</option>
+                            <option value="it-IT">it-IT</option>
+                            <option value="ja-JP">ja-JP</option>
+                            <option value="ka-GE">ka-GE</option>
+                            <option value="ko-KR" selected>ko-KR</option>
+                            <option value="ms-MY">ms-MY</option>
+                            <option value="nb-NO">nb-NO</option>
+                            <option value="nl-NL">nl-NL</option>
+                            <option value="pl-PL">pl-PL</option>
+                            <option value="pt-BR">pt-BR</option>
+                            <option value="pt-PT">pt-PT</option>
+                            <option value="ro-RO">ro-RO</option>
+                            <option value="ru-RU">ru-RU</option>
+                            <option value="sk-SK">sk-SK</option>
+                            <option value="sv-SE">sv-SE</option>
+                            <option value="th-TH">th-TH</option>
+                            <option value="tr-TR">tr-TR</option>
+                            <option value="uk-UA">uk-UA</option>
+                            <option value="ur-PK">ur-PK</option>
+                            <option value="uz-Latn-UZ">uz-Latn-UZ</option>
+                            <option value="vi-VN">vi-VN</option>
+                            <option value="zh-CN">zh-CN</option>
+                            <option value="zh-TW">zh-TW</option>
+                        </select>
+                    </div>
+
+                    <div id="toolbar">
+                        <button id="remove" class="btn btn-danger" disabled>
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </div>
+                    <table id="table" class="" data-toolbar="#toolbar" data-search="true"
+                        data-show-pagination-switch="true" data-show-refresh="true" data-show-fullscreen="true"
+                        data-show-columns="true" data-click-to-select="true" data-minimum-count-columns="2"
+                        data-pagination="true" data-side-pagination="server" data-page-list="[10, 25, 50, 100, all]"
+                        data-id-field="id" data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+                        data-response-handler="responseHandler">
+                    </table>
+
+
+                    <script src="/static/js/datatable.js"></script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+</html>

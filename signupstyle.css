@@ -1,3 +1,7 @@
+* {
+    font-family: "Cormorant Garamond", serif;
+  }
+
 .body__container {
     display: flex;
     justify-content: center;

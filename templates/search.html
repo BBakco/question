@@ -1,3 +1,9 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -19,25 +25,29 @@
       crossorigin="anonymous"
     ></script>
 
-     <!-- Font -->
-     <link rel="preconnect" href="https://fonts.googleapis.com" />
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-     <link
-       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
-       rel="stylesheet"
-     />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
-     <link rel="preconnect" href="https://fonts.googleapis.com" />
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-     <link
-       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap"
-       rel="stylesheet"
-     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       src="https://kit.fontawesome.com/f1def33959.js"
       crossorigin="anonymous"
     ></script>
+
+    <script src="/static/js/search-keyword.js"></script>
+    <script defer src="/static/js/search-like.js"></script>
+
     <script defer src="/static/js/backtotop.js"></script>
 
     <!-- 일반적인 fabicon 설정 (정현) -->
@@ -61,12 +71,12 @@
       }
 
       .keyword-inputbox input {
-        border-radius:4px;
+        border-radius: 4px;
         box-shadow: none;
-        font-size:1.2em;
-        -webkit-appearance:none;
+        font-size: 1.2em;
+        -webkit-appearance: none;
         -moz-appearance: none;
-        -o-appearance:none;
+        -o-appearance: none;
         appearance: none;
         border: rgba(0, 0, 0, 0.623) 3px solid;
       }
@@ -112,7 +122,7 @@
 
       .logo-box span {
         font-size: 70px;
-        color:black;
+        color: black;
         font-family: "Cormorant Garamond", serif;
       }
 
@@ -122,31 +132,31 @@
         font-weight: 700;
       }
 
-        /* [라디오 버튼 커스텀 스타일 변경 실시] */
-      input[type='radio'] {
-        -webkit-appearance:none;
-        width:17px;
-        height:17px;
+      /* [라디오 버튼 커스텀 스타일 변경 실시] */
+      input[type="radio"] {
+        -webkit-appearance: none;
+        width: 17px;
+        height: 17px;
         /* [라디오 버튼 테두리 색상 정의] */
-        border:1px solid darkgray;
-        border-radius:50%;
-        outline:none;
+        border: 1px solid darkgray;
+        border-radius: 50%;
+        outline: none;
         /* [라디오 버튼 배경 색상 정의] */
-        background:#ffffff;
+        background: #ffffff;
       }
-      input[type='radio']:before {
+      input[type="radio"]:before {
         /* [content null 설정해서 커스텀 지정] */
-        content:'';
-        display:block;
-        width:70%;
-        height:70%;
+        content: "";
+        display: block;
+        width: 70%;
+        height: 70%;
         margin: 15% auto;
-        border-radius:50%;
+        border-radius: 50%;
       }
 
-      input[type='radio']:checked:before {
+      input[type="radio"]:checked:before {
         /* [라디오 버튼이 클릭 되었을 경우 내부 원형 색상] */
-        background:#ff3300;
+        background: #ff3300;
       }
 
       .search-btn {
@@ -191,20 +201,63 @@
       }
 
       .result-question-container {
-        margin: 50px 20px 25px 20px;
+        margin: 30px 20px 25px 20px;
       }
 
       .result-question-text {
         font-weight: 800;
+        font-size: 15px;
       }
 
       .result-answer-container {
         margin: 25px 20px 25px 20px;
       }
 
+      .result-answer-text {
+        z-index: 999;
+        font-size: 13px;
+        margin-left: 8%;
+        margin-right: 8%;
+        font-weight: 800;
+      }
+
+      .result-answer-text {
+        font-size: 13px;
+        line-height: 180%;
+        width: 77%;
+
+        padding-right: 10px;
+        position: absolute;
+        left: 6%;
+        top: 38%;
+        display: -webkit-box;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: vertical;
+        height: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 350;
+      }
+
+      .result-writer-img {
+        width: 35px;
+        position: absolute;
+        bottom: 5px;
+        left: 45%;
+      }
+
+      .thought-bubble {
+        width: 280px;
+        height: 120px;
+        position: absolute;
+        bottom: 50px;
+        left: 6%;
+        opacity: 27%;
+      }
+
       .likes-num {
         font-size: 10px;
-        color: white
+        color: white;
       }
 
       .like-btn {
@@ -221,6 +274,7 @@
       .article-id-hidden {
         opacity: 0;
       }
+
 
       #backtotop {
         background-color: rgb(47, 48, 89);
@@ -258,11 +312,154 @@
         background-color: rgb(47, 48, 49);
       }
 
+      .only-first-glance-margin {
+        height: 17vh;
+      }
+
+      .only-first-logo-box {
+        margin-bottom: 18px;
+        font-size: 70px;
+        color: gray;
+        font-family: "Cormorant Garamond", serif;
+      }
+
+      .only-first-logo-box span {
+        font-size: 110px;
+        color: black;
+        font-family: "Cormorant Garamond", serif;
+      }
+
 
     </style>
   </head>
 
   <body>
+    <a id="backtotop" href="#"></a>
+
+    <header id="header">
+      <div class="header">
+        <div class="row">
+          <div class="header_menu">
+            {% if session %}
+            <a href="/contents" class="contents-btn">QnA</a>
+            <a href="/mypage" class="mypage-btn">Mypage</a>
+            {% endif %}
+            <a href="/main/user" class="home-btn">Home</a>
+            {% if session %}
+            <a href="/user/signout" class="logout-btn">Logout</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </header>
+    <center>
+      {% if not keyword %}
+      <div class="only-first-glance-margin"></div>
+      <div class="only-first-logo-box">QUES<span>?</span>TION</div>
+      {% endif %}
+      {% if keyword %}
+      <a href="/search"><div class="logo-box">QUES<span>?</span>TION</div></a>
+      {% endif %}
+      <form
+        name="search-box"
+        method="POST"
+        class="search-box"
+        action="/keyword/search"
+      >
+        <div class="inputBox keyword-inputbox">
+          <input
+            type="text"
+            id="keyword"
+            name="keyword"
+            autocomplete="off"
+            {%
+            if
+            keyword
+            %}
+            value="{{keyword}}"
+            {%
+            endif
+            %}
+            required
+          />
+        </div>
+        <br />검색 범위:
+        <input
+          type="radio"
+          value="all"
+          name="scope"
+          {%
+          if
+          range
+          !="나의 글"
+          %}
+          checked
+          {%
+          endif
+          %}
+        />모든 글 {% if session %} <input type="radio" value="useronly"
+        name="scope" {% if range == '나의 글' %} checked {% endif %}/>나의 글
+        {% endif %}
+        <br /><br />정렬 기준:
+        <input
+          type="radio"
+          value="recent"
+          name="align-standard"
+          {%
+          if
+          criterion
+          !="like"
+          %}
+          checked
+          {%
+          endif
+          %}
+        />최근 글 <input type="radio" value="like" name="align-standard" {% if
+        criterion == 'like' %} checked {% endif %}/>공감 수<br />
+        <br />
+        <input
+          name="submit"
+          id="submit"
+          type="submit"
+          value="검색"
+          class="search-btn"
+        />
+      </form>
+      <br />
+      {% if range and keyword %}
+      <p id="description">
+        <span class="range-text">{{range}}</span>에서
+        <span class="keyword-text">"{{keyword}}"</span>을(를) 검색한 결과입니다.
+      </p>
+      {% endif %}
+      <div class="results-list">
+        <ul id="results-cards-container">
+          {% for result in results %}
+          <li class="result-showcard">
+            <div class="result-question-container">
+              <div class="result-question-text">{{result['question']}}</div>
+            </div>
+            <span class="article-id-hidden">{{result['_id']}}</span>
+            <div class="result-answer-text">{{result['answer']}}</div>
+
+            <a style="cursor: pointer" class="like-btn">
+              <span class="likes-num">{{result['like']}}</span>
+              <img
+                src="/static/image/heart-white.png"
+                onmouseover="this.src='../static/image/heart-red-like.png'"
+                onmouseout="this.src='../static/image/heart-white.png'"
+                id="like-btn_image"
+                class="like-btn_image"
+              />
+            </a>
+            <img class="result-writer-img" src="{{result['img']}}">
+            <img class="thought-bubble" src="/static/image/thought-bubble.png">
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </center>
+
     <script>
       $("form[name=search-box]").submit(function (e) {
         var $form = $(this);
@@ -280,94 +477,17 @@
       });
     </script>
 
-    <a id="backtotop" href="#"></a>
-
-    <header id="header">
-      <div class="header">
-        <div class="row">
-          <div class="header_menu">
-            <a href="/contents" class="contents-btn">QnA</a>
-            <a href="/mypage" class="mypage-btn">Mypage</a>
-            <a href="/main/user" class="home-btn">Home</a>
-            <a href="/user/signout" class="logout-btn">Logout</a>
-          </div>
-        </div>
-      </div>
-    </header>
-    <center>
-      <div class=logo-box>QUES<span>?</span>TION
-      </div>
-      <form
-        name="search-box"
-        method="POST"
-        class="search-box"
-        action="/keyword/search"
-      >
-        <div class="inputBox keyword-inputbox">
-          <input
-            type="text"
-            id="keyword"
-            name="keyword"
-            autocomplete="off"
-            required
-          />
-        </div>
-        <br />검색 범위:
-        <input type="radio" value="all" name="scope" checked />모든 글
-        <input type="radio" value="useronly" name="scope" />나의 글<br />
-
-        <br />정렬 기준:
-        <input type="radio" value="recent" name="align-standard" checked />최근 글
-        <input type="radio" value="like" name="align-standard" />공감 수<br />
-        <br />
-        <input
-          name="submit"
-          id="submit"
-          type="submit"
-          value="검색"
-          class="search-btn"
-        />
-
-      </form>
-      <br />
-      <p id="description">
-        <span class="range-text">{{range}}</span>에서
-        <span class="keyword-text">"{{keyword}}"</span>을(를) 검색한 결과입니다.
-      </p>
-      <div class="results-list">
-        <ul>
-          {% for result in results %}
-          <li class="result-showcard">
-            <div class="result-question-container">
-              <div class="result-question-text">{{result['question']}}</div>
-            </div>
-            <span class="article-id-hidden">{{result['_id']}}</span>
-            <div class="result-answer-text">{{result['answer']}}</div>
-
-            <a style="cursor: pointer" class="like-btn" href="#">
-              <span class="likes-num">{{result['like']}}</span>
-              <img
-                src="/static/image/heart-white.png"
-                onmouseover="this.src='../static/image/heart-red-like.png'"
-                onmouseout="this.src='../static/image/heart-white.png'"
-                id="like-btn_image"
-                class="like-btn_image"
-              />
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </center>
-
     <script>
-      $("a").click(function (event) {
+      $(".like-btn").click(function (event) {
         eventElem = event.target;
-        testElem = eventElem.parentElement;
-        targetElem = testElem.previousElementSibling.previousElementSibling;
+        console.log(eventElem);
+        testElem1 = eventElem.parentElement;
+        console.log(testElem1);
+        testElem2 = testElem1.previousElementSibling;
+        console.log(testElem2);
+        targetElem = testElem2.previousElementSibling;
         id_of_article = targetElem.innerText;
-        console.log(id_of_article)
-
+        console.log(id_of_article);
 
         $.ajax({
           type: "POST",
